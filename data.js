@@ -5,8 +5,8 @@
  */
 
 const HOTEL = {
-    name: '3 Wonders Tarkarli',
-    fullName: '3 Wonders Tarkarli Hotel and Restaurant',
+    name: "Wairkar's 3 Wonders Tarkarli",
+    fullName: "Wairkar's 3 Wonders Tarkarli",
     tagline: 'Your Coastal Escape in Tarkarli',
     phone: '+919820049021',
     phoneDisplay: '+91 98200 49021',
@@ -34,7 +34,7 @@ const HOTEL = {
 const ROOMS = [
     {
         id: 'ac-sea-view',
-        name: 'AC Room — Sea View',
+        name: 'AC Sea View Room',
         shortDesc: 'Wake up to the sound of the Arabian Sea with panoramic ocean views from your window.',
         description: 'Our Sea View rooms offer a stunning panorama of the Arabian Sea. Thoughtfully designed with comfort in mind, each room features air conditioning, a comfortable bed, private bathroom, and modern amenities. Fall asleep to the gentle sound of waves and wake up to breathtaking ocean sunrises.',
         amenities: ['Air Conditioning', 'Sea View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
@@ -43,24 +43,24 @@ const ROOMS = [
         imgLabel: 'AC Sea View Room'
     },
     {
-        id: 'ac-mountain-view',
-        name: 'AC Room — Mountain View',
+        id: 'ac-mountain-view-premium',
+        name: 'AC Mountain View Premium Room',
         shortDesc: 'Relax with serene views of the lush Western Ghats and surrounding greenery.',
         description: 'Surrounded by tropical greenery, our Mountain View rooms offer a peaceful retreat from the world. Each room comes equipped with air conditioning, comfortable bedding, a private bathroom, and all modern conveniences. Ideal for couples and families looking for a tranquil getaway.',
         amenities: ['Air Conditioning', 'Mountain/Garden View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
         view: 'Mountain View',
         category: 'rooms',
-        imgLabel: 'AC Mountain View Room'
+        imgLabel: 'AC Mountain View Premium Room'
     },
     {
-        id: 'ac-deluxe',
-        name: 'AC Deluxe Room',
+        id: 'ac-family-suites',
+        name: 'AC Family Suites',
         shortDesc: 'Our most spacious rooms offering premium comfort for families and groups.',
-        description: 'The Deluxe rooms at 3 Wonders are our most spacious offerings, designed for those who appreciate extra room and comfort. Featuring air conditioning, modern furnishings, a well-appointed private bathroom, and all essential amenities. Perfect for families and longer stays.',
+        description: 'The Family Suites at Wairkar\'s 3 Wonders are our most spacious offerings, designed for those who appreciate extra room and comfort. Featuring air conditioning, modern furnishings, a well-appointed private bathroom, and all essential amenities. Perfect for families and longer stays.',
         amenities: ['Air Conditioning', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service', 'Electric Kettle'],
         view: 'Resort View',
         category: 'rooms',
-        imgLabel: 'AC Deluxe Room'
+        imgLabel: 'AC Family Suites'
     }
 ];
 
