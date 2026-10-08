@@ -40,7 +40,8 @@ const ROOMS = [
         amenities: ['Air Conditioning', 'Sea View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
         view: 'Sea View',
         category: 'rooms',
-        imgLabel: 'AC Sea View Room'
+        imgLabel: 'AC Sea View Room',
+        image: 'photos/SEA VIEW DELUXE.jpeg'
     },
     {
         id: 'ac-mountain-view-premium',
@@ -50,7 +51,8 @@ const ROOMS = [
         amenities: ['Air Conditioning', 'Mountain/Garden View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
         view: 'Mountain View',
         category: 'rooms',
-        imgLabel: 'AC Mountain View Premium Room'
+        imgLabel: 'AC Mountain View Premium Room',
+        image: 'photos/PREMIUM ROOM.jpeg'
     },
     {
         id: 'ac-family-suites',
@@ -60,7 +62,8 @@ const ROOMS = [
         amenities: ['Air Conditioning', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service', 'Electric Kettle'],
         view: 'Resort View',
         category: 'rooms',
-        imgLabel: 'AC Family Suites'
+        imgLabel: 'AC Family Suites',
+        image: 'photos/FAMILY ROOM.jpeg'
     }
 ];
 
@@ -184,22 +187,21 @@ const ATTRACTIONS = [
 ];
 
 const GALLERY_ITEMS = [
-    { label: 'Resort Exterior', category: 'property' },
-    { label: 'Sea View Room', category: 'rooms' },
-    { label: 'Tarkarli Beach Sunset', category: 'beach' },
-    { label: 'Malvani Fish Curry', category: 'food' },
-    { label: 'Room Interior', category: 'rooms' },
-    { label: 'Garden Area', category: 'property' },
-    { label: 'Seafood Thali', category: 'food' },
-    { label: 'Beach View from Property', category: 'beach' },
-    { label: 'Scuba Diving at Tarkarli', category: 'experiences' },
-    { label: 'Mountain View Room', category: 'rooms' },
-    { label: 'Restaurant Seating', category: 'property' },
-    { label: 'Devbag Beach', category: 'beach' },
-    { label: 'Sindhudurg Fort', category: 'experiences' },
-    { label: 'Coconut Palms', category: 'property' },
-    { label: 'Boat Ride on Backwaters', category: 'experiences' },
-    { label: 'Fresh Seafood', category: 'food' }
+    { label: 'Reception', category: 'property', image: 'photos/RECEPTION.jpeg' },
+    { label: 'Sea View Deluxe', category: 'rooms', image: 'photos/SEA VIEW DELUXE.jpeg' },
+    { label: 'Restaurant', category: 'food', image: 'photos/RESTAURANT.jpeg' },
+    { label: 'Lobby', category: 'property', image: 'photos/LOBBY.jpeg' },
+    { label: 'Family Room', category: 'rooms', image: 'photos/FAMILY ROOM.jpeg' },
+    { label: 'Dining Area', category: 'food', image: 'photos/RESTAURANT1.jpeg' },
+    { label: 'Premium Room', category: 'rooms', image: 'photos/PREMIUM ROOM.jpeg' },
+    { label: 'Parking', category: 'property', image: 'photos/PARKING.jpeg' },
+    { label: 'Sea View Room 2', category: 'rooms', image: 'photos/SEA VIEW DELUXE 2.jpeg' },
+    { label: 'Waiting Area', category: 'property', image: 'photos/WATING AREA.jpeg' },
+    { label: 'Family Room 2', category: 'rooms', image: 'photos/FAMILY ROOM 2.jpeg' },
+    { label: 'Premium Bathroom', category: 'rooms', image: 'photos/BATHROOM PREMIUM ROOM.jpeg' },
+    { label: 'Lobby View 2', category: 'property', image: 'photos/LOBBY 3.jpeg' },
+    { label: 'Restaurant 2', category: 'food', image: 'photos/RESTAURENT 2.jpeg' },
+    { label: 'Sea View Bathroom', category: 'rooms', image: 'photos/BATHROOM SEA VIEW DELUXE.jpeg' }
 ];
 
 const REVIEWS = [
