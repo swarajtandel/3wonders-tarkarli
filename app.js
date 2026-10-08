@@ -165,34 +165,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // 2. Render Other Categories
-        const otherCategories = [
-            { id: 'parking', title: 'Parking' },
-            { id: 'food', title: 'Food' },
-            { id: 'reception', title: 'Reception' },
-            { id: 'lobby', title: 'Lobby / Common Areas' }
-        ];
+        // Render single Gallery Grid for all non-room categories
+        const grid = document.createElement('div');
+        grid.className = 'gallery-grid';
+        grid.dataset.group = 'all-categories';
 
-        otherCategories.forEach(cat => {
-            const grid = document.createElement('div');
-            grid.className = 'gallery-grid';
-            grid.dataset.group = cat.id;
-
-            GALLERY_ITEMS.forEach((item, index) => {
-                if (item.category.includes(cat.id)) {
-                    const el = document.createElement('div');
-                    el.className = `gallery-item category-${item.category.replace(/ /g, '-')}`;
-                    el.dataset.category = item.category;
-                    el.dataset.index = index;
-                    el.innerHTML = item.image ? `<img src="${item.image}" alt="${item.label}" loading="lazy">` : `<div class="img-placeholder" data-label="${item.label}"></div>`;
-                    grid.appendChild(el);
-                    galleryElements.push(el);
-                    el.addEventListener('click', () => openLightbox(index));
-                }
-            });
-
-            galleryContainer.appendChild(grid);
+        GALLERY_ITEMS.forEach((item, index) => {
+            if (!item.category.includes('rooms')) {
+                const el = document.createElement('div');
+                const sizeClass = item.size ? ` gallery-item-${item.size}` : '';
+                el.className = `gallery-item category-${item.category.replace(/ /g, '-')}${sizeClass}`;
+                el.dataset.category = item.category;
+                el.dataset.index = index;
+                el.innerHTML = item.image ? `<img src="${item.image}" alt="${item.label}" loading="lazy">` : `<div class="img-placeholder" data-label="${item.label}"></div>`;
+                grid.appendChild(el);
+                galleryElements.push(el);
+                el.addEventListener('click', () => openLightbox(index));
+            }
         });
+
+        galleryContainer.appendChild(grid);
     }
 
     // Inject Reviews
@@ -204,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.innerHTML = `
                 <div class="review-card-stars">${stars}</div>
                 <p class="review-card-text">"${review.text}"</p>
-                <div class="review-card-author">— ${review.name} <span style="opacity:0.5; font-size:0.8em;">| ${review.source}</span></div>
+                <div class="review-card-author">- ${review.name} <span style="opacity:0.5; font-size:0.8em;">| ${review.source}</span></div>
             `;
             reviewsCarousel.appendChild(el);
         });
@@ -296,11 +288,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Handle regular grid visibility
                 const grids = document.querySelectorAll('.gallery-grid');
                 grids.forEach(grid => {
-                    const group = grid.dataset.group;
-                    if (filter === 'all' || filter === group) {
-                        grid.style.display = 'grid';
-                    } else {
+                    if (filter === 'rooms') {
                         grid.style.display = 'none';
+                    } else {
+                        grid.style.display = 'grid';
                     }
                 });
             });

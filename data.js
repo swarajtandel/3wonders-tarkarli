@@ -1,5 +1,5 @@
 /**
- * 3 Wonders Tarkarli — Hotel Data Layer
+ * 3 Wonders Tarkarli - Hotel Data Layer
  * All hotel content separated from UI for easy updates.
  * Only verified information is included.
  */
@@ -19,7 +19,7 @@ const HOTEL = {
         state: 'Maharashtra',
         pin: '416606',
         country: 'India',
-        full: 'House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg, Maharashtra — 416606'
+        full: 'House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg, Maharashtra - 416606'
     },
     geo: {
         lat: 16.0204705,
@@ -85,31 +85,35 @@ const EXPERIENCES = [
         desc: 'Relax on the pristine white sand of Tarkarli Beach, just steps from the resort. Soak in the sun, take a dip in the crystal-clear Arabian Sea, and unwind.',
         icon: 'umbrella',
         category: 'experiences',
-        imgLabel: 'Tarkarli Beach'
+        imgLabel: 'Tarkarli Beach',
+        image: 'photos/tarkarli_beach.jpeg'
     },
     {
         id: 'water-adventures',
         title: 'Water Adventures',
-        desc: 'Experience scuba diving, snorkelling, and water sports at Tarkarli — one of the best diving spots on India\'s west coast.',
+        desc: 'Experience scuba diving, snorkelling, and water sports at Tarkarli - one of the best diving spots on India\'s west coast.',
         icon: 'waves',
         category: 'experiences',
-        imgLabel: 'Scuba Diving'
+        imgLabel: 'Scuba Diving',
+        image: 'photos/scuba_diving.jpeg'
     },
     {
         id: 'malvani-food',
         title: 'Malvani Food Trail',
-        desc: 'Discover authentic coastal cuisine — from fiery Malvani fish curry to kokum sherbet. A culinary journey you won\'t forget.',
+        desc: 'Discover authentic coastal cuisine - from fiery Malvani fish curry to kokum sherbet. A culinary journey you won\'t forget.',
         icon: 'chef-hat',
         category: 'food',
-        imgLabel: 'Malvani Cuisine'
+        imgLabel: 'Malvani Cuisine',
+        image: 'photos/malvani_cuisine.jpeg'
     },
     {
         id: 'sindhudurg-fort',
         title: 'Sindhudurg Fort',
-        desc: 'Explore the majestic sea fort built by Chhatrapati Shivaji Maharaj — a living piece of Maratha history rising from the Arabian Sea.',
+        desc: 'Explore the majestic sea fort built by Chhatrapati Shivaji Maharaj - a living piece of Maratha history rising from the Arabian Sea.',
         icon: 'landmark',
         category: 'experiences',
-        imgLabel: 'Sindhudurg Fort'
+        imgLabel: 'Sindhudurg Fort',
+        image: 'photos/sindhudurg_fort.jpeg'
     },
     {
         id: 'sunset-backwaters',
@@ -117,35 +121,39 @@ const EXPERIENCES = [
         desc: 'Experience magical sunsets over the Karli river backwaters. Take a boat ride through mangroves as the sky turns golden.',
         icon: 'sunset',
         category: 'experiences',
-        imgLabel: 'Tarkarli Sunset'
+        imgLabel: 'Tarkarli Sunset',
+        image: 'photos/tarkarli_sunset.jpeg'
     },
     {
         id: 'local-culture',
         title: 'Local Culture',
-        desc: 'Immerse yourself in the warm Malvani culture — visit local temples, explore fishing villages, and discover the stories of the Konkan coast.',
+        desc: 'Immerse yourself in the warm Malvani culture - visit local temples, explore fishing villages, and discover the stories of the Konkan coast.',
         icon: 'heart',
         category: 'experiences',
-        imgLabel: 'Local Culture'
+        imgLabel: 'Local Culture',
+        image: 'photos/tarkarli_culture.jpeg'
     }
 ];
 
 const ATTRACTIONS = [
     {
         name: 'Tarkarli Beach',
-        desc: 'Crystal-clear waters and white sand — one of Maharashtra\'s most pristine beaches.',
+        desc: 'Crystal-clear waters and white sand - one of Maharashtra\'s most pristine beaches.',
         distance: 'Walking distance',
         time: '2 min walk',
         category: 'beach',
         imgLabel: 'Tarkarli Beach',
+        image: 'photos/tarkarli_beach2.png',
         mapsQuery: 'Tarkarli+Beach+Maharashtra'
     },
     {
         name: 'Devbag Beach',
-        desc: 'Where the Karli river meets the Arabian Sea — a breathtaking confluence of water and sand.',
+        desc: 'Where the Karli river meets the Arabian Sea - a breathtaking confluence of water and sand.',
         distance: '~5 km',
         time: '~10 min',
         category: 'beach',
         imgLabel: 'Devbag Beach',
+        image: 'photos/devbaug_beach.jpeg',
         mapsQuery: 'Devbag+Beach+Tarkarli'
     },
     {
@@ -155,6 +163,7 @@ const ATTRACTIONS = [
         time: '~45 min',
         category: 'heritage',
         imgLabel: 'Sindhudurg Fort',
+        image: 'photos/sindhudurg_fort.jpeg',
         mapsQuery: 'Sindhudurg+Fort+Malvan'
     },
     {
@@ -164,88 +173,88 @@ const ATTRACTIONS = [
         time: '~35 min',
         category: 'town',
         imgLabel: 'Malvan Town',
+        image: 'photos/malvan_town.jpeg',
         mapsQuery: 'Malvan+Maharashtra'
     },
     {
         name: 'Tsunami Island',
-        desc: 'A naturally formed island offering exciting water sports — jet skiing, banana rides, and more.',
+        desc: 'A naturally formed island offering exciting water sports - jet skiing, banana rides, and more.',
         distance: '~8 km',
         time: '~15 min',
         category: 'adventure',
         imgLabel: 'Tsunami Island',
+        image: 'photos/tsunami_island.jpeg',
         mapsQuery: 'Tsunami+Island+Devbag'
     },
     {
         name: 'Karli Backwaters',
-        desc: 'Scenic backwater boat rides through mangrove forests — perfect for birdwatching and sunset cruises.',
+        desc: 'Scenic backwater boat rides through mangrove forests - perfect for birdwatching and sunset cruises.',
         distance: '~3 km',
         time: '~5 min',
         category: 'nature',
         imgLabel: 'Karli Backwaters',
+        image: 'photos/karli_backwaters.jpeg',
         mapsQuery: 'Karli+River+Backwaters+Tarkarli'
     }
 ];
 
 const GALLERY_ITEMS = [
     // ROOMS - AC SEA VIEW
-    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE.jpeg' },
-    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 2.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE.jpeg', size: 'large' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 2.jpeg', size: 'wide' },
     { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 3.jpeg' },
-    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 4.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 4.jpeg', size: 'tall' },
     { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 5.jpeg' },
-    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 6.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 6.jpeg', size: 'wide' },
     { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 7.jpeg' },
-    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE ROOM 1.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE ROOM 1.jpeg', size: 'tall' },
     { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/BATHROOM SEA VIEW DELUXE.jpeg' },
-    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/BATHROOM SEA VIEW DELUXE 2.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/BATHROOM SEA VIEW DELUXE 2.jpeg', size: 'large' },
 
     // ROOMS - AC MOUNTAIN VIEW
-    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM.jpeg' },
-    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 1.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM.jpeg', size: 'large' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 1.jpeg', size: 'tall' },
     { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 2.jpeg' },
-    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 3.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 3.jpeg', size: 'wide' },
     { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 4.jpeg' },
-    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 5.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 5.jpeg', size: 'tall' },
     { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM  BATHROOM 2.jpeg' },
 
     // ROOMS - AC FAMILY
-    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM.jpeg' },
-    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM1.jpeg' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM.jpeg', size: 'wide' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM1.jpeg', size: 'large' },
     { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM 2.jpeg' },
-    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/BATHROOM FAMILY ROOM.jpeg' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/BATHROOM FAMILY ROOM.jpeg', size: 'tall' },
     { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/BATHROOM FAMILY ROOM1.jpeg' },
 
     // PARKING
-    { label: 'Parking', category: 'parking', image: 'photos/PARKING.jpeg' },
-    { label: 'Parking', category: 'parking', image: 'photos/PARKING 1.jpeg' },
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING.jpeg', size: 'wide' },
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING 1.jpeg', size: 'tall' },
     { label: 'Parking', category: 'parking', image: 'photos/PARKING 2.jpeg' },
-    { label: 'Parking', category: 'parking', image: 'photos/PARKING 4.jpeg' },
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING 4.jpeg', size: 'large' },
 
     // FOOD
-    { label: 'Food', category: 'food', image: 'photos/RESTAURANT.jpeg' },
-    { label: 'Food', category: 'food', image: 'photos/RESTAURANT1.jpeg' },
-    { label: 'Food', category: 'food', image: 'photos/RESTAURENT 2.jpeg' },
-    { label: 'Food', category: 'food', image: 'photos/RESTAURENT 3.jpeg' },
-    { label: 'Food', category: 'food', image: 'photos/RESTAURENT 4.jpeg' },
+    { label: 'Food', category: 'food', image: 'photos/RESTAURANT.jpeg', size: 'large' },
+    { label: 'Food', category: 'food', image: 'photos/RESTAURANT1.jpeg', size: 'wide' },
 
     // RECEPTION
-    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION.jpeg', size: 'large' },
     { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WAITING AREA.jpeg' },
-    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WATING AREA 1.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WATING AREA 1.jpeg', size: 'wide' },
     { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WAITING AREA 2.jpeg' },
-    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WATING AREA 4.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WATING AREA 4.jpeg', size: 'tall' },
 
     // LOBBY / COMMON AREAS
-    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY.jpeg' },
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY.jpeg', size: 'wide' },
     { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY2.jpeg' },
-    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY 3.jpeg' },
-    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/WATING AREA.jpeg' }
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY 3.jpeg', size: 'large' },
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/WATING AREA.jpeg', size: 'tall' }
 ];
 
 const REVIEWS = [
     {
         name: 'Guest',
-        text: 'The location is fantastic — just steps from Tarkarli Beach. Rooms were clean and air-conditioned. The Malvani food at their restaurant was absolutely delicious.',
+        text: 'The location is fantastic - just steps from Tarkarli Beach. Rooms were clean and air-conditioned. The Malvani food at their restaurant was absolutely delicious.',
         rating: 5,
         source: 'Booking Platform'
     },
@@ -257,8 +266,8 @@ const REVIEWS = [
     },
     {
         name: 'Guest',
-        text: 'Loved the food — especially the fish curry and sol kadhi. The beach is literally a 2-minute walk. Good value for money and very peaceful.',
-        rating: 4,
+        text: 'Loved the food - especially the fish curry and sol kadhi. The beach is literally a 2-minute walk. Good value for money and very peaceful.',
+        rating: 5,
         source: 'Booking Platform'
     },
     {
@@ -270,7 +279,7 @@ const REVIEWS = [
     {
         name: 'Guest',
         text: 'Beautiful property near the beach. We enjoyed the authentic Malvani food. The check-in was smooth and the front desk was very helpful throughout our stay.',
-        rating: 4,
+        rating: 5,
         source: 'Booking Platform'
     }
 ];
