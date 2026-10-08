@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
             el.className = 'attraction-card';
             el.innerHTML = `
                 <div class="attraction-card-image">
-                    ${attr.image ? `<img src="${attr.image}" alt="${attr.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">` : `<div class="img-placeholder" data-label="${attr.imgLabel}"></div>`}
+                    ${attr.image ? `<img src="${attr.image}?v=c1" alt="${attr.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">` : `<div class="img-placeholder" data-label="${attr.imgLabel}"></div>`}
                 </div>
                 <div class="attraction-card-body">
                     <h3 class="attraction-card-title">${attr.name}</h3>
@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 el.className = `gallery-item category-${item.category.replace(/ /g, '-')}${sizeClass}`;
                 el.dataset.category = item.category;
                 el.dataset.index = index;
-                el.innerHTML = item.image ? `<img src="${item.image}" alt="${item.label}" loading="lazy">` : `<div class="img-placeholder" data-label="${item.label}"></div>`;
+                el.innerHTML = item.image ? `<img src="${item.image}?v=c1" alt="${item.label}" loading="lazy">` : `<div class="img-placeholder" data-label="${item.label}"></div>`;
                 grid.appendChild(el);
                 galleryElements.push(el);
                 el.addEventListener('click', () => openLightbox(index));
@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (item) {
             if (item.image) {
                 lightboxImage.className = '';
-                lightboxImage.innerHTML = `<img src="${item.image}" alt="${item.label}" style="max-width: 100%; max-height: 80vh; object-fit: contain;">`;
+                lightboxImage.innerHTML = `<img src="${item.image}?v=c1" alt="${item.label}" style="max-width: 100%; max-height: 80vh; object-fit: contain;">`;
             } else {
                 lightboxImage.className = 'img-placeholder lightbox-placeholder';
                 lightboxImage.innerHTML = '';
