@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileNav = document.getElementById('mobileNav');
     const mobileNavClose = document.getElementById('mobileNavClose');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-    
+
     const roomsShowcase = document.getElementById('roomsShowcase');
     const roomModal = document.getElementById('roomModal');
     const roomModalBackdrop = document.getElementById('roomModalBackdrop');
@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const attractionsGrid = document.getElementById('attractionsGrid');
     const galleryGrid = document.getElementById('galleryGrid');
     const galleryFilters = document.querySelectorAll('.gallery-filter');
-    
+
     const lightbox = document.getElementById('lightbox');
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxNext = document.getElementById('lightboxNext');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxCaption = document.getElementById('lightboxCaption');
-    
+
     const reviewsCarousel = document.getElementById('reviewsCarousel');
 
     // Forms
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('scrolled');
         }
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Init
 
@@ -65,13 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navToggle.addEventListener('click', toggleMobileNav);
     mobileNavClose.addEventListener('click', toggleMobileNav);
-    
+
     mobileNavLinks.forEach(link => {
         link.addEventListener('click', toggleMobileNav);
     });
 
     // 4. Data Injection
-    
+
     // Inject Rooms
     if (typeof ROOMS !== 'undefined' && roomsShowcase) {
         ROOMS.forEach(room => {
@@ -159,17 +159,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inject Gallery
     let galleryElements = [];
-    if (typeof GALLERY_ITEMS !== 'undefined' && galleryGrid) {
-        GALLERY_ITEMS.forEach((item, index) => {
-            const el = document.createElement('div');
-            el.className = `gallery-item category-${item.category}`;
-            el.dataset.category = item.category;
-            el.dataset.index = index;
-            el.innerHTML = item.image ? `<img src="${item.image}" alt="${item.label}" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">` : `<div class="img-placeholder" data-label="${item.label}"></div>`;
-            galleryGrid.appendChild(el);
-            galleryElements.push(el);
+    const galleryContainer = document.getElementById('galleryContainer');
+    if (typeof GALLERY_ITEMS !== 'undefined' && galleryContainer) {
+        galleryContainer.innerHTML = ''; // Clear container
 
-            el.addEventListener('click', () => openLightbox(index));
+
+
+        // 2. Render Other Categories
+        const otherCategories = [
+            { id: 'parking', title: 'Parking' },
+            { id: 'food', title: 'Food' },
+            { id: 'reception', title: 'Reception' },
+            { id: 'lobby', title: 'Lobby / Common Areas' }
+        ];
+
+        otherCategories.forEach(cat => {
+            const grid = document.createElement('div');
+            grid.className = 'gallery-grid';
+            grid.dataset.group = cat.id;
+
+            GALLERY_ITEMS.forEach((item, index) => {
+                if (item.category.includes(cat.id)) {
+                    const el = document.createElement('div');
+                    el.className = `gallery-item category-${item.category.replace(/ /g, '-')}`;
+                    el.dataset.category = item.category;
+                    el.dataset.index = index;
+                    el.innerHTML = item.image ? `<img src="${item.image}" alt="${item.label}" loading="lazy">` : `<div class="img-placeholder" data-label="${item.label}"></div>`;
+                    grid.appendChild(el);
+                    galleryElements.push(el);
+                    el.addEventListener('click', () => openLightbox(index));
+                }
+            });
+
+            galleryContainer.appendChild(grid);
         });
     }
 
@@ -192,6 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
 
     // 5. Room Modal Logic
+
     window.openRoomModal = (roomId) => {
         const room = ROOMS.find(r => r.id === roomId);
         if (!room) return;
@@ -219,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `;
-        
+
         lucide.createIcons();
         roomModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -238,10 +261,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    if(roomModalClose) roomModalClose.addEventListener('click', closeRoomModal);
-    if(roomModalBackdrop) roomModalBackdrop.addEventListener('click', closeRoomModal);
+    if (roomModalClose) roomModalClose.addEventListener('click', closeRoomModal);
+    if (roomModalBackdrop) roomModalBackdrop.addEventListener('click', closeRoomModal);
 
     // 6. Gallery Filter & Lightbox Logic
+
     if (galleryFilters.length > 0) {
         galleryFilters.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -250,12 +274,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 btn.classList.add('active');
 
                 const filter = btn.dataset.filter;
-                
+
                 galleryElements.forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
+                    if (filter === 'all' || (item.dataset.category && item.dataset.category.includes(filter))) {
                         item.style.display = '';
                     } else {
                         item.style.display = 'none';
+                    }
+                });
+
+                // Handle Rooms Wrapper visibility
+                const roomsWrapper = document.querySelector('.rooms-gallery-wrapper');
+                if (roomsWrapper) {
+                    if (filter === 'all' || filter === 'rooms') {
+                        roomsWrapper.style.display = 'grid';
+                    } else {
+                        roomsWrapper.style.display = 'none';
+                    }
+                }
+
+                // Handle regular grid visibility
+                const grids = document.querySelectorAll('.gallery-grid');
+                grids.forEach(grid => {
+                    const group = grid.dataset.group;
+                    if (filter === 'all' || filter === group) {
+                        grid.style.display = 'grid';
+                    } else {
+                        grid.style.display = 'none';
                     }
                 });
             });
@@ -337,9 +382,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (bookingForm) {
         bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const checkIn = document.getElementById('bf-checkin').value;
             const checkOut = document.getElementById('bf-checkout').value;
+
+            // Validate Check-out >= Check-in
+            if (new Date(checkOut) < new Date(checkIn)) {
+                alert("Check-out date cannot be earlier than check-in date.");
+                return;
+            }
+
             const adults = document.getElementById('bf-adults').value;
             const children = document.getElementById('bf-children').value;
             const rooms = document.getElementById('bf-rooms').value;
@@ -350,22 +402,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('bf-email').value;
             const requests = document.getElementById('bf-requests').value;
 
-            const message = `Hello Wairkar's 3 Wonders Tarkarli,
+            // Optional: formatting date beautifully (e.g. 15 October 2026)
+            const formatDate = (dateStr) => {
+                const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                return new Date(dateStr).toLocaleDateString('en-GB', options);
+            };
+
+            const message = `Hello 3 Wonders Tarkarli,
 
 I would like to make a booking request.
 
-*Booking Details*
-👤 Name: ${name}
+🏨 BOOKING DETAILS
+
+👤 Full Name: ${name}
 📞 Phone: ${phone}
 📧 Email: ${email || 'N/A'}
-📅 Check-in: ${checkIn}
-📅 Check-out: ${checkOut}
-👥 Guests: ${adults} Adults, ${children} Children
-🏠 Rooms Needed: ${rooms}
-🛏️ Room Preference: ${roomType}
-📝 Message: ${requests || 'None'}
 
-Please confirm availability, pricing, and booking details.
+📅 Check-in: ${formatDate(checkIn)}
+📅 Check-out: ${formatDate(checkOut)}
+
+👨 Adults: ${adults}
+👧 Children: ${children}
+🏠 Number of Rooms: ${rooms}
+🛏 Room Preference: ${roomType}
+
+📝 Special Requests:
+${requests || 'None'}
+
+Please confirm availability and pricing.
 
 Thank you.`;
 
@@ -378,8 +442,7 @@ Thank you.`;
                     <div class="success-icon">
                         <i data-lucide="check-circle" class="icon-lg"></i>
                     </div>
-                    <h3>Request Preparing...</h3>
-                    <p>WhatsApp opened. Please press Send in WhatsApp to submit your booking request.</p>
+                    <p>WhatsApp opened with your booking details. Please press Send to submit your request.</p>
                 `;
                 bookingSuccess.style.display = 'block';
                 lucide.createIcons();
@@ -387,40 +450,7 @@ Thank you.`;
         });
     }
 
-    if (callbackForm) {
-        callbackForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('cb-name').value;
-            const phone = document.getElementById('cb-phone').value;
-            const date = document.getElementById('cb-date').value;
-            const guests = document.getElementById('cb-guests').value;
-            const message = document.getElementById('cb-message').value;
 
-            const waMessage = `Hello Wairkar's 3 Wonders Tarkarli,
-
-I would like to request a callback.
-
-*Details*
-👤 Name: ${name}
-📞 Phone: ${phone}
-📅 Preferred Date: ${date || 'Not specified'}
-👥 Guests: ${guests || 'Not specified'}
-📝 Message: ${message || 'None'}`;
-
-            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`;
-            window.open(whatsappURL, "_blank");
-
-            callbackForm.style.display = 'none';
-            if (callbackSuccess) {
-                callbackSuccess.innerHTML = `
-                    <i data-lucide="check-circle" class="icon-lg"></i>
-                    <p>WhatsApp opened. Please press Send in WhatsApp to request a callback.</p>
-                `;
-                callbackSuccess.style.display = 'block';
-                lucide.createIcons();
-            }
-        });
-    }
 
     if (quickBookingForm) {
         quickBookingForm.addEventListener('submit', (e) => {
@@ -429,15 +459,15 @@ I would like to request a callback.
             const checkout = document.getElementById('bb-checkout').value;
             const guests = document.getElementById('bb-guests').value;
             const rooms = document.getElementById('bb-rooms').value;
-            
+
             // Redirect to main booking form and populate
             document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-            
+
             setTimeout(() => {
-                if(checkin) document.getElementById('bf-checkin').value = checkin;
-                if(checkout) document.getElementById('bf-checkout').value = checkout;
-                if(guests) document.getElementById('bf-adults').value = guests;
-                if(rooms) document.getElementById('bf-rooms').value = rooms;
+                if (checkin) document.getElementById('bf-checkin').value = checkin;
+                if (checkout) document.getElementById('bf-checkout').value = checkout;
+                if (guests) document.getElementById('bf-adults').value = guests;
+                if (rooms) document.getElementById('bf-rooms').value = rooms;
             }, 500);
         });
     }

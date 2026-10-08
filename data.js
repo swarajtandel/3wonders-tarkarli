@@ -22,12 +22,12 @@ const HOTEL = {
         full: 'House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg, Maharashtra — 416606'
     },
     geo: {
-        lat: 16.0170,
-        lng: 73.4680
+        lat: 16.0204705,
+        lng: 73.4889806
     },
     checkin: '12:00 PM',
     checkout: '11:00 AM',
-    mapsUrl: 'https://www.google.com/maps/search/3+Wonders+Tarkarli+Hotel+and+Restaurant',
+    mapsUrl: 'https://www.google.com/maps/place/3+Wonders+Tarkarli+Hotel+and+Restaurant/@16.0204705,73.4864057,915m/data=!3m1!1e3!4m9!3m8!1s0x3bc003861dfbf90d:0x4dc95bb93ea03dc8!5m2!4m1!1i2!8m2!3d16.0204705!4d73.4889806!16s%2Fg%2F11wxf_b6r6?hl=en-US&entry=ttu&g_ep=EgoyMDI2MTAwNS4wIKXMDSoASAFQAw%3D%3D',
     websiteUrl: 'https://sites.google.com/view/3-wonders-tarkarli'
 };
 
@@ -187,21 +187,59 @@ const ATTRACTIONS = [
 ];
 
 const GALLERY_ITEMS = [
-    { label: 'Reception', category: 'property', image: 'photos/RECEPTION.jpeg' },
-    { label: 'Sea View Deluxe', category: 'rooms', image: 'photos/SEA VIEW DELUXE.jpeg' },
-    { label: 'Restaurant', category: 'food', image: 'photos/RESTAURANT.jpeg' },
-    { label: 'Lobby', category: 'property', image: 'photos/LOBBY.jpeg' },
-    { label: 'Family Room', category: 'rooms', image: 'photos/FAMILY ROOM.jpeg' },
-    { label: 'Dining Area', category: 'food', image: 'photos/RESTAURANT1.jpeg' },
-    { label: 'Premium Room', category: 'rooms', image: 'photos/PREMIUM ROOM.jpeg' },
-    { label: 'Parking', category: 'property', image: 'photos/PARKING.jpeg' },
-    { label: 'Sea View Room 2', category: 'rooms', image: 'photos/SEA VIEW DELUXE 2.jpeg' },
-    { label: 'Waiting Area', category: 'property', image: 'photos/WATING AREA.jpeg' },
-    { label: 'Family Room 2', category: 'rooms', image: 'photos/FAMILY ROOM 2.jpeg' },
-    { label: 'Premium Bathroom', category: 'rooms', image: 'photos/BATHROOM PREMIUM ROOM.jpeg' },
-    { label: 'Lobby View 2', category: 'property', image: 'photos/LOBBY 3.jpeg' },
-    { label: 'Restaurant 2', category: 'food', image: 'photos/RESTAURENT 2.jpeg' },
-    { label: 'Sea View Bathroom', category: 'rooms', image: 'photos/BATHROOM SEA VIEW DELUXE.jpeg' }
+    // ROOMS - AC SEA VIEW
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 2.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 3.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 4.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 5.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 6.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE 7.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/SEA VIEW DELUXE ROOM 1.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/BATHROOM SEA VIEW DELUXE.jpeg' },
+    { label: 'AC Sea View', category: 'rooms-ac-sea-view', image: 'photos/BATHROOM SEA VIEW DELUXE 2.jpeg' },
+
+    // ROOMS - AC MOUNTAIN VIEW
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 1.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 2.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 3.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 4.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM ROOM 5.jpeg' },
+    { label: 'AC Mountain View', category: 'rooms-ac-mountain-view', image: 'photos/PREMIUM  BATHROOM 2.jpeg' },
+
+    // ROOMS - AC FAMILY
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM.jpeg' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM1.jpeg' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/FAMILY ROOM 2.jpeg' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/BATHROOM FAMILY ROOM.jpeg' },
+    { label: 'AC Family', category: 'rooms-ac-family', image: 'photos/BATHROOM FAMILY ROOM1.jpeg' },
+
+    // PARKING
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING.jpeg' },
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING 1.jpeg' },
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING 2.jpeg' },
+    { label: 'Parking', category: 'parking', image: 'photos/PARKING 4.jpeg' },
+
+    // FOOD
+    { label: 'Food', category: 'food', image: 'photos/RESTAURANT.jpeg' },
+    { label: 'Food', category: 'food', image: 'photos/RESTAURANT1.jpeg' },
+    { label: 'Food', category: 'food', image: 'photos/RESTAURENT 2.jpeg' },
+    { label: 'Food', category: 'food', image: 'photos/RESTAURENT 3.jpeg' },
+    { label: 'Food', category: 'food', image: 'photos/RESTAURENT 4.jpeg' },
+
+    // RECEPTION
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WAITING AREA.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WATING AREA 1.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WAITING AREA 2.jpeg' },
+    { label: 'Reception', category: 'reception', image: 'photos/RECEPTION WATING AREA 4.jpeg' },
+
+    // LOBBY / COMMON AREAS
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY.jpeg' },
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY2.jpeg' },
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/LOBBY 3.jpeg' },
+    { label: 'Lobby / Common Areas', category: 'lobby', image: 'photos/WATING AREA.jpeg' }
 ];
 
 const REVIEWS = [
