@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Dining &amp; Malvani Cuisine | 3 Wonders Tarkarli</title>
+    <meta name="description"
+        content="Savour authentic Malvani cuisine and fresh coastal seafood at 3 Wonders Tarkarli. In-house restaurant serving fresh fish thalis, Surmai fry, Sol Kadhi, and coastal breakfasts.">
+    <link rel="canonical" href="https://3wonders-tarkarli.swarajtandel1714.workers.dev/dining">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=11">
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header class="site-header" role="banner">
+        <div class="container-wide">
+            <div class="nav-wrap">
+                <a href="index.html" class="brand-link" aria-label="3 Wonders Tarkarli Home">
+                    <img src="photos/logo.png" alt="3 Wonders Tarkarli Logo" class="brand-logo-img">
+                    <div class="brand-text-block">
+                        <span class="brand-title">3 Wonders</span>
+                        <span class="brand-subtitle">Tarkarli</span>
+                    </div>
+                </a>
+
+                <div class="nav-center">
+                    <nav class="primary-nav" aria-label="Primary Navigation">
+                        <a href="index.html" class="nav-link">About Us</a>
+                        <a href="rooms.html" class="nav-link">Rooms</a>
+                        <a href="dining.html" class="nav-link active">Dining</a>
+                        <a href="experiences.html" class="nav-link">Experiences</a>
+                    </nav>
+
+                    <div style="position: relative;">
+                        <button class="nav-more-trigger" id="navMoreTrigger" aria-label="Open more navigation links" aria-expanded="false">
+                            <i data-lucide="more-horizontal" style="width: 22px; height: 22px;"></i>
+                        </button>
+
+                        <div class="nav-dropdown-menu" id="navDropdownMenu">
+                            <a href="gallery.html" class="dropdown-item">
+                                <i data-lucide="image" style="width: 18px; height: 18px;"></i> Gallery
+                            </a>
+                            <a href="location.html" class="dropdown-item">
+                                <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i> Location
+                            </a>
+                            <a href="contact.html" class="dropdown-item">
+                                <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i> Contact Us
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-contact-info">
+                                <div>Front Desk: <strong style="color:var(--color-ocean);">+91 98200 49021</strong></div>
+                                <div style="margin-top:2px;">Malvan, Sindhudurg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20would%20like%20to%20enquire%20about%20dining%20and%20reservations."
+                        target="_blank" class="btn btn-book nav-book-btn">
+                        BOOK NOW
+                    </a>
+
+                    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="mobile-drawer-panel">
+            <div class="drawer-header">
+                <div class="brand-text-block">
+                    <span class="brand-title">3 Wonders</span>
+                    <span class="brand-subtitle">Tarkarli, Malvan</span>
+                </div>
+                <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+                    <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+                </button>
+            </div>
+
+            <nav class="drawer-nav-list" aria-label="Mobile Navigation">
+                <a href="index.html">About Us <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="rooms.html">Rooms <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="dining.html" class="active">Dining <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="experiences.html">Experiences <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="gallery.html">Gallery <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="location.html">Location <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="contact.html">Contact Us <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+            </nav>
+
+            <div class="drawer-actions">
+                <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20would%20like%20to%20enquire%20about%20dining."
+                    target="_blank" class="btn btn-book" style="width: 100%;">
+                    BOOK NOW
+                </a>
+                <a href="tel:+919820049021" class="btn btn-outline-dark" style="width: 100%;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i> +91 98200 49021
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Natural Top Hero Image (NO BLUE TINT) & Intro Text Below -->
+    <div class="page-top-banner">
+        <img src="photos/RESTAURANT.jpeg" alt="Dining at 3 Wonders Tarkarli">
+    </div>
+
+    <div class="page-header-intro">
+        <div class="container">
+            <div class="breadcrumb-trail">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Dining</span>
+            </div>
+            <h1 class="page-title">Authentic Malvani Dining</h1>
+            <p class="page-desc">
+                From fresh catch pan-fried seafood to soothing glasses of Sol Kadhi, discover the rich flavours and warm hospitality of the Konkan coast.
+            </p>
+        </div>
+    </div>
+
+    <!-- Dining Introduction Section -->
+    <section class="section" aria-label="Dining Overview">
+        <div class="container">
+            <div class="dining-intro-grid">
+                <div>
+                    <span class="section-eyebrow">Coastal Gastronomy</span>
+                    <h2 class="editorial-title" style="margin-bottom: 1.25rem;">Homestyle Recipes, Fresh Coastal Ingredients</h2>
+                    <p class="editorial-body" style="margin-bottom: 1rem;">
+                        At <strong>Wairkar's 3 Wonders Tarkarli</strong>, our in-house restaurant is dedicated to serving authentic Konkan and Malvani preparations made with traditional stone-ground masalas, freshly grated coconut, and fish procured directly from the morning catch.
+                    </p>
+                    <p class="editorial-body" style="margin-bottom: 1.5rem;">
+                        Whether enjoying a leisurely lunch after a morning swim at Tarkarli Beach or relaxing with family over dinner, our dining room and room service provide satisfying, freshly prepared meals made to order.
+                    </p>
+                    <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                        <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20would%20like%20to%20enquire%20about%20meal%20services%20and%20dining."
+                            target="_blank" class="btn btn-book">
+                            <i data-lucide="message-circle" style="width:16px;height:16px;"></i> Enquire via WhatsApp
+                        </a>
+                        <a href="tel:+919820049021" class="btn btn-outline-dark">
+                            <i data-lucide="phone" style="width:16px;height:16px;"></i> Call Restaurant: +91 98200 49021
+                        </a>
+                    </div>
+                </div>
+
+                <div class="editorial-media">
+                    <img src="photos/Malvani thali.jpeg" alt="Authentic Malvani Thali at 3 Wonders" class="editorial-img" style="height: 380px;">
+                </div>
+            </div>
+
+            <!-- Food Photographs Gallery Grid -->
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <span class="section-eyebrow">Visual Feast</span>
+                <h2 class="section-title">Our Food &amp; Dining Ambiance</h2>
+            </div>
+
+            <div class="dining-gallery-grid">
+                <div class="dining-img-card">
+                    <img src="photos/Malvani thali.jpeg" alt="Traditional Malvani Thali" loading="lazy">
+                    <div class="dining-img-caption">Authentic Malvani Fish Thali</div>
+                </div>
+                <div class="dining-img-card">
+                    <img src="photos/fish.jpeg" alt="Fresh Crisp Pan-Fried Fish" loading="lazy">
+                    <div class="dining-img-caption">Fresh Catch Pan-Fried Fish</div>
+                </div>
+                <div class="dining-img-card">
+                    <img src="photos/fish2.jpeg" alt="Traditional Coastal Seafood" loading="lazy">
+                    <div class="dining-img-caption">Coastal Seafood Specialities</div>
+                </div>
+                <div class="dining-img-card">
+                    <img src="photos/RESTAURANT.jpeg" alt="In-house Restaurant Dining Space" loading="lazy">
+                    <div class="dining-img-caption">In-House Restaurant Hall</div>
+                </div>
+                <div class="dining-img-card">
+                    <img src="photos/RESTAURANT1.jpeg" alt="Restaurant Seating at 3 Wonders" loading="lazy">
+                    <div class="dining-img-caption">Welcoming Dining Ambiance</div>
+                </div>
+                <div class="dining-img-card">
+                    <img src="photos/malvani_cuisine.jpeg" alt="Spices and Coastal Malvani Cooking" loading="lazy">
+                    <div class="dining-img-caption">Authentic Stone-Ground Spices</div>
+                </div>
+            </div>
+
+            <!-- Authentic Speciality Highlights -->
+            <div class="menu-highlights-grid">
+                <!-- Category 1: Coastal Seafood Specialities -->
+                <div class="menu-category-card">
+                    <h3 class="menu-category-title">Coastal Seafood Highlights</h3>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Surmai Rava / Masala Fry</div>
+                            <div class="menu-item-desc">Kingfish marinated in authentic Malvani spices and crisp rava fried.</div>
+                        </div>
+                    </div>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Pomfret Coastal Curry</div>
+                            <div class="menu-item-desc">Fresh white pomfret simmered in coconut milk, triphala, and kokum gravy.</div>
+                        </div>
+                    </div>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Prawns Sukka / Masala</div>
+                            <div class="menu-item-desc">Tender fresh prawns sautéed with roasted coconut, onions, and Malvani masala.</div>
+                        </div>
+                    </div>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Malvani Fish Thali</div>
+                            <div class="menu-item-desc">Complete coastal feast with fish curry, fried fish, sol kadhi, bhakri/chapati, and rice.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Traditional Konkan & Homestyle Meals -->
+                <div class="menu-category-card">
+                    <h3 class="menu-category-title">Traditional Konkan &amp; Veg</h3>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Sol Kadhi (Fresh Kokum Drink)</div>
+                            <div class="menu-item-desc">Signature Konkan digestive crafted from pure coconut milk, garlic, and fresh kokum.</div>
+                        </div>
+                    </div>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Kombdi Vade (Chicken Speciality)</div>
+                            <div class="menu-item-desc">Tender chicken in rich aromatic gravy served with traditional multigrain vade.</div>
+                        </div>
+                    </div>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Konkan Vegetarian Thali</div>
+                            <div class="menu-item-desc">Homestyle seasonal vegetable curries, dal, kokum kadhi, fresh rotis, and steamed rice.</div>
+                        </div>
+                    </div>
+                    <div class="menu-item-row">
+                        <div>
+                            <div class="menu-item-name">Coastal Breakfast &amp; Teas</div>
+                            <div class="menu-item-desc">Poha, Upma, Omelettes, and hot tea/coffee to start your morning by the beach.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dining Timings & Service Box -->
+            <div style="background:var(--color-sand); border-radius:var(--radius-md); padding:2rem; margin-top:3.5rem; text-align:center;">
+                <h4 style="font-size:1.4rem; color:var(--color-ocean); margin-bottom:0.75rem;">Dining Hours &amp; Room Service</h4>
+                <p style="color:var(--color-text-muted); max-width:650px; margin:0 auto 1.5rem;">
+                    Breakfast: 8:00 AM – 10:30 AM · Lunch: 12:30 PM – 3:30 PM · Dinner: 7:30 PM – 10:30 PM<br>
+                    In-room dining service is available for resident hotel guests during operational hours.
+                </p>
+                <a href="https://wa.me/919820049021?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20ordering%20food%20at%203%20Wonders."
+                    target="_blank" class="btn btn-book">
+                    WhatsApp Front Desk for Dining Enquiries
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-top-grid">
+                <div class="footer-brand">
+                    <h4>3 Wonders Tarkarli</h4>
+                    <p>
+                        Wairkar's boutique beachside resort offering air-conditioned rooms, authentic Malvani dining, and unforgettable sunsets along the Arabian Sea.
+                    </p>
+                    <div style="font-size:0.84rem; color:rgba(255,255,255,0.7);">
+                        Check-in: 12:00 PM · Check-out: 11:00 AM
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="footer-col-title">Quick Links</h5>
+                    <ul class="footer-nav-list">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="rooms.html">Rooms &amp; Suites</a></li>
+                        <li><a href="dining.html">Dining &amp; Cuisine</a></li>
+                        <li><a href="experiences.html">Experiences</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="location.html">Location &amp; Map</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-col-title">Experiences</h5>
+                    <ul class="footer-nav-list">
+                        <li><a href="experiences.html">Scuba Diving &amp; Snorkeling</a></li>
+                        <li><a href="experiences.html">Tarkarli White Sand Beach</a></li>
+                        <li><a href="experiences.html">Karli Backwaters &amp; Sunset</a></li>
+                        <li><a href="experiences.html">Sindhudurg Fort Exploration</a></li>
+                        <li><a href="experiences.html">Water Sports at Tsunami Island</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-col-title">Get in Touch</h5>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                        <span>House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg, Maharashtra - 416606</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        <a href="tel:+919820049021" style="color:inherit;">+91 98200 49021</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+                        <a href="https://wa.me/919820049021" target="_blank" style="color:inherit;">WhatsApp: +91 98200 49021</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div>&copy; 2026 Wairkar's 3 Wonders Tarkarli. All Rights Reserved.</div>
+                <div><a href="location.html">How to Reach</a> · <a href="contact.html">Reservations &amp; Enquiries</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <div class="floating-actions-wrap">
+        <a href="https://wa.me/919820049021?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20dining%20at%203%20Wonders."
+            class="floating-whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp Us">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.07c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.15.11-3.69-.94-3.25-1.35-5.34-4.66-5.5-4.88-.16-.22-1.31-1.74-1.31-3.32 0-1.58.83-2.36 1.12-2.68.29-.32.64-.4.85-.4.21 0 .42.01.61.02.2.01.46-.07.72.55.26.63.89 2.18.97 2.34.08.16.13.35.03.56-.11.21-.16.34-.32.52-.16.18-.34.4-.48.54-.16.15-.33.32-.14.64.19.32.84 1.39 1.8 2.25 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.13.7-.08.19-.21.8-.93 1.01-1.25.21-.32.43-.27.72-.16.29.11 1.86.88 2.18 1.04.32.16.53.24.61.37.08.14.08.79-.16 1.46z"/>
+            </svg>
+        </a>
+        <button class="floating-back-top" id="backToTopBtn" aria-label="Back to Top">
+            <i data-lucide="chevron-up" style="width: 22px; height: 22px;"></i>
+        </button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js?v=11"></script>
+</body>
+
+</html>

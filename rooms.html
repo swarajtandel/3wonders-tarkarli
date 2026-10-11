@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Rooms &amp; Suites | 3 Wonders Tarkarli Resort</title>
+    <meta name="description"
+        content="Explore spacious AC Sea View, Mountain View Premium, and Family Suites at Wairkar's 3 Wonders Tarkarli. Air-conditioned rooms with private bathrooms steps from Tarkarli Beach.">
+    <link rel="canonical" href="https://3wonders-tarkarli.swarajtandel1714.workers.dev/rooms">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=11">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER NAVIGATION
+         ============================================================ -->
+    <header class="site-header" role="banner">
+        <div class="container-wide">
+            <div class="nav-wrap">
+                <a href="index.html" class="brand-link" aria-label="3 Wonders Tarkarli Home">
+                    <img src="photos/logo.png" alt="3 Wonders Tarkarli Logo" class="brand-logo-img">
+                    <div class="brand-text-block">
+                        <span class="brand-title">3 Wonders</span>
+                        <span class="brand-subtitle">Tarkarli</span>
+                    </div>
+                </a>
+
+                <div class="nav-center">
+                    <nav class="primary-nav" aria-label="Primary Navigation">
+                        <a href="index.html" class="nav-link">About Us</a>
+                        <a href="rooms.html" class="nav-link active">Rooms</a>
+                        <a href="dining.html" class="nav-link">Dining</a>
+                        <a href="experiences.html" class="nav-link">Experiences</a>
+                    </nav>
+
+                    <div style="position: relative;">
+                        <button class="nav-more-trigger" id="navMoreTrigger" aria-label="Open more navigation links" aria-expanded="false">
+                            <i data-lucide="more-horizontal" style="width: 22px; height: 22px;"></i>
+                        </button>
+
+                        <div class="nav-dropdown-menu" id="navDropdownMenu">
+                            <a href="gallery.html" class="dropdown-item">
+                                <i data-lucide="image" style="width: 18px; height: 18px;"></i> Gallery
+                            </a>
+                            <a href="location.html" class="dropdown-item">
+                                <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i> Location
+                            </a>
+                            <a href="contact.html" class="dropdown-item">
+                                <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i> Contact Us
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <div class="dropdown-contact-info">
+                                <div>Front Desk: <strong style="color:var(--color-ocean);">+91 98200 49021</strong></div>
+                                <div style="margin-top:2px;">Malvan, Sindhudurg</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-right">
+                    <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20would%20like%20to%20book%20a%20stay.%20Please%20share%20room%20availability%20and%20rates."
+                        target="_blank" class="btn btn-book nav-book-btn">
+                        BOOK NOW
+                    </a>
+
+                    <button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <div class="mobile-drawer-panel">
+            <div class="drawer-header">
+                <div class="brand-text-block">
+                    <span class="brand-title">3 Wonders</span>
+                    <span class="brand-subtitle">Tarkarli, Malvan</span>
+                </div>
+                <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+                    <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+                </button>
+            </div>
+
+            <nav class="drawer-nav-list" aria-label="Mobile Navigation">
+                <a href="index.html">About Us <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="rooms.html" class="active">Rooms <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="dining.html">Dining <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="experiences.html">Experiences <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="gallery.html">Gallery <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="location.html">Location <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="contact.html">Contact Us <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+            </nav>
+
+            <div class="drawer-actions">
+                <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20would%20like%20to%20book%20a%20room."
+                    target="_blank" class="btn btn-book" style="width: 100%;">
+                    BOOK NOW
+                </a>
+                <a href="tel:+919820049021" class="btn btn-outline-dark" style="width: 100%;">
+                    <i data-lucide="phone" style="width: 16px; height: 16px;"></i> +91 98200 49021
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         NATURAL TOP HERO IMAGE (NO BLUE TINT) & INTRO TEXT BELOW
+         ============================================================ -->
+    <div class="page-top-banner">
+        <img src="photos/SEA VIEW DELUXE.jpeg" alt="Rooms at 3 Wonders Tarkarli">
+    </div>
+
+    <div class="page-header-intro">
+        <div class="container">
+            <div class="breadcrumb-trail">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Accommodations</span>
+            </div>
+            <h1 class="page-title">Rooms &amp; Suites</h1>
+            <p class="page-desc">
+                Thoughtfully appointed, air-conditioned sanctuaries designed for couples, families, and beach lovers seeking pure comfort steps from the Arabian Sea.
+            </p>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ROOMS GRID SECTION
+         ============================================================ -->
+    <section class="section" aria-label="Available Rooms">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Coastal Comfort</span>
+                <h2 class="section-title">Explore Our Coastal Stays</h2>
+                <p class="section-desc">
+                    Every room is equipped with split air conditioning, private attached bathroom, flat-screen television, and free high-speed Wi-Fi.
+                </p>
+            </div>
+
+            <div class="rooms-grid">
+                <!-- Room 1: AC Sea View Room -->
+                <article class="room-card" data-room-id="ac-sea-view">
+                    <div class="room-card-media">
+                        <img src="photos/SEA VIEW DELUXE.jpeg" alt="AC Sea View Room at 3 Wonders" class="room-card-img" loading="lazy">
+                        <span class="room-card-badge">Sea View</span>
+                    </div>
+                    <div class="room-card-body">
+                        <div class="room-card-header-row">
+                            <h3 class="room-card-title">AC Sea View Room</h3>
+                            <div class="room-card-price">₹2,800 <small>/ night</small></div>
+                        </div>
+                        <p class="room-card-desc">
+                            Wake up to the gentle murmur of the Arabian Sea with panoramic coastal ocean views from your window. Designed for couples and solo travelers looking for serene ocean vibes.
+                        </p>
+                        <div class="room-amenity-tags">
+                            <span class="room-tag">Air Conditioning</span>
+                            <span class="room-tag">Sea View</span>
+                            <span class="room-tag">TV &amp; Wi-Fi</span>
+                            <span class="room-tag">Attached Bathroom</span>
+                            <span class="room-tag">Room Service</span>
+                        </div>
+                        <div class="room-card-actions">
+                            <button class="room-details-btn" onclick="openRoomModal('ac-sea-view')">
+                                View Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </button>
+                            <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20am%20interested%20in%20booking%20the%20AC%20Sea%20View%20Room."
+                                target="_blank" class="btn btn-book" style="padding:0.6rem 1.2rem; font-size:0.78rem;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Room 2: AC Mountain View Premium Room -->
+                <article class="room-card" data-room-id="ac-mountain-view-premium">
+                    <div class="room-card-media">
+                        <img src="photos/PREMIUM ROOM.jpeg" alt="AC Mountain View Premium Room" class="room-card-img" loading="lazy">
+                        <span class="room-card-badge">Mountain / Garden View</span>
+                    </div>
+                    <div class="room-card-body">
+                        <div class="room-card-header-row">
+                            <h3 class="room-card-title">AC Mountain View Premium</h3>
+                            <div class="room-card-price">₹2,400 <small>/ night</small></div>
+                        </div>
+                        <p class="room-card-desc">
+                            Surrounded by lush Konkan greenery and serene views of the Western Ghats. A tranquil haven equipped with comfortable bedding, modern bathroom, and peaceful atmosphere.
+                        </p>
+                        <div class="room-amenity-tags">
+                            <span class="room-tag">Air Conditioning</span>
+                            <span class="room-tag">Mountain View</span>
+                            <span class="room-tag">TV &amp; Wi-Fi</span>
+                            <span class="room-tag">Attached Bathroom</span>
+                            <span class="room-tag">Room Service</span>
+                        </div>
+                        <div class="room-card-actions">
+                            <button class="room-details-btn" onclick="openRoomModal('ac-mountain-view-premium')">
+                                View Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </button>
+                            <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20am%20interested%20in%20booking%20the%20AC%20Mountain%20View%20Premium%20Room."
+                                target="_blank" class="btn btn-book" style="padding:0.6rem 1.2rem; font-size:0.78rem;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Room 3: AC Family Suites -->
+                <article class="room-card" data-room-id="ac-family-suites">
+                    <div class="room-card-media">
+                        <img src="photos/FAMILY ROOM.jpeg" alt="AC Family Suites" class="room-card-img" loading="lazy">
+                        <span class="room-card-badge">Family Suite</span>
+                    </div>
+                    <div class="room-card-body">
+                        <div class="room-card-header-row">
+                            <h3 class="room-card-title">AC Family Suites</h3>
+                            <div class="room-card-price">₹3,800 <small>/ night</small></div>
+                        </div>
+                        <p class="room-card-desc">
+                            Our most spacious offerings, tailored for families and larger groups needing extra comfort and room. Comes with generous sleeping space, attached bath, and all essential amenities.
+                        </p>
+                        <div class="room-amenity-tags">
+                            <span class="room-tag">Air Conditioning</span>
+                            <span class="room-tag">Spacious Layout</span>
+                            <span class="room-tag">TV &amp; Wi-Fi</span>
+                            <span class="room-tag">Electric Kettle</span>
+                            <span class="room-tag">Room Service</span>
+                        </div>
+                        <div class="room-card-actions">
+                            <button class="room-details-btn" onclick="openRoomModal('ac-family-suites')">
+                                View Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </button>
+                            <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20am%20interested%20in%20booking%20the%20AC%20Family%20Suite."
+                                target="_blank" class="btn btn-book" style="padding:0.6rem 1.2rem; font-size:0.78rem;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         RESORT AMENITIES HIGHLIGHT
+         ============================================================ -->
+    <section class="section" style="background-color: var(--color-sand);" aria-label="Hotel Amenities">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-eyebrow">Comfort &amp; Facilities</span>
+                <h2 class="section-title">Property Amenities</h2>
+                <p class="section-desc">
+                    Every essential convenience for a seamless and comfortable coastal getaway.
+                </p>
+            </div>
+
+            <div class="why-features-row" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="wifi"></i></div>
+                    <h3 class="why-feature-title">Free High-Speed Wi-Fi</h3>
+                    <p class="why-feature-desc">Reliable internet across all rooms and public areas.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="car"></i></div>
+                    <h3 class="why-feature-title">Free Private Parking</h3>
+                    <p class="why-feature-desc">Spacious and secure parking directly on premises.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="utensils"></i></div>
+                    <h3 class="why-feature-title">In-House Restaurant</h3>
+                    <p class="why-feature-desc">Authentic Malvani meals and coastal seafood dining.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="bell"></i></div>
+                    <h3 class="why-feature-title">Room Service</h3>
+                    <p class="why-feature-desc">Convenient dining served directly to your room.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="snowflake"></i></div>
+                    <h3 class="why-feature-title">Air Conditioning</h3>
+                    <p class="why-feature-desc">Powerful split AC units in all guest rooms.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="tv"></i></div>
+                    <h3 class="why-feature-title">Flat Television</h3>
+                    <p class="why-feature-desc">LED TV entertainment in every room.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="shield-check"></i></div>
+                    <h3 class="why-feature-title">24hr Assistance</h3>
+                    <p class="why-feature-desc">Helpful front desk staff ready to assist anytime.</p>
+                </div>
+                <div class="why-feature-card">
+                    <div class="why-feature-icon-wrap"><i data-lucide="bath"></i></div>
+                    <h3 class="why-feature-title">Attached Bathroom</h3>
+                    <p class="why-feature-desc">Clean, private attached western bathrooms with geyser.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         ROOM DETAILS MODAL
+         ============================================================ -->
+    <div class="room-modal-backdrop" id="roomModal" aria-hidden="true">
+        <div class="room-modal-card">
+            <button class="room-modal-close-btn" onclick="closeRoomModal()" aria-label="Close modal">
+                <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+            </button>
+            <div id="roomModalContent"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-top-grid">
+                <div class="footer-brand">
+                    <h4>3 Wonders Tarkarli</h4>
+                    <p>
+                        Wairkar's boutique beachside resort offering air-conditioned rooms, authentic Malvani dining, and unforgettable sunsets along the Arabian Sea.
+                    </p>
+                    <div style="font-size:0.84rem; color:rgba(255,255,255,0.7);">
+                        Check-in: 12:00 PM · Check-out: 11:00 AM
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="footer-col-title">Quick Links</h5>
+                    <ul class="footer-nav-list">
+                        <li><a href="index.html">About Us</a></li>
+                        <li><a href="rooms.html">Rooms &amp; Suites</a></li>
+                        <li><a href="dining.html">Dining &amp; Cuisine</a></li>
+                        <li><a href="experiences.html">Experiences</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="location.html">Location &amp; Map</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-col-title">Experiences</h5>
+                    <ul class="footer-nav-list">
+                        <li><a href="experiences.html">Scuba Diving &amp; Snorkeling</a></li>
+                        <li><a href="experiences.html">Tarkarli White Sand Beach</a></li>
+                        <li><a href="experiences.html">Karli Backwaters &amp; Sunset</a></li>
+                        <li><a href="experiences.html">Sindhudurg Fort Exploration</a></li>
+                        <li><a href="experiences.html">Water Sports at Tsunami Island</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="footer-col-title">Get in Touch</h5>
+                    <div class="footer-contact-item">
+                        <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
+                        <span>House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg, Maharashtra - 416606</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        <a href="tel:+919820049021" style="color:inherit;">+91 98200 49021</a>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
+                        <a href="https://wa.me/919820049021" target="_blank" style="color:inherit;">WhatsApp: +91 98200 49021</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div>&copy; 2026 Wairkar's 3 Wonders Tarkarli. All Rights Reserved.</div>
+                <div><a href="location.html">How to Reach</a> · <a href="contact.html">Reservations &amp; Enquiries</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <div class="floating-actions-wrap">
+        <a href="https://wa.me/919820049021?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20room%20bookings%20at%203%20Wonders."
+            class="floating-whatsapp-btn" target="_blank" rel="noopener" aria-label="WhatsApp Us">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.07c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.15.11-3.69-.94-3.25-1.35-5.34-4.66-5.5-4.88-.16-.22-1.31-1.74-1.31-3.32 0-1.58.83-2.36 1.12-2.68.29-.32.64-.4.85-.4.21 0 .42.01.61.02.2.01.46-.07.72.55.26.63.89 2.18.97 2.34.08.16.13.35.03.56-.11.21-.16.34-.32.52-.16.18-.34.4-.48.54-.16.15-.33.32-.14.64.19.32.84 1.39 1.8 2.25 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.13.7-.08.19-.21.8-.93 1.01-1.25.21-.32.43-.27.72-.16.29.11 1.86.88 2.18 1.04.32.16.53.24.61.37.08.14.08.79-.16 1.46z"/>
+            </svg>
+        </a>
+        <button class="floating-back-top" id="backToTopBtn" aria-label="Back to Top">
+            <i data-lucide="chevron-up" style="width: 22px; height: 22px;"></i>
+        </button>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js?v=11"></script>
+</body>
+
+</html>

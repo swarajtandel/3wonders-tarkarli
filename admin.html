@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>Property Management · 3 Wonders Tarkarli</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css?v=11">
+</head>
+
+<body class="admin-page-body">
+
+    <!-- ============================================================
+         1. SECURE PASSCODE ACCESS SCREEN
+         ============================================================ -->
+    <div class="admin-lock-screen" id="adminLockScreen">
+        <div class="admin-lock-card">
+            <div class="admin-lock-eyebrow">Private Executive Access</div>
+            <img src="photos/logo.png" alt="3 Wonders Tarkarli Logo" class="admin-lock-logo">
+            <h1 class="admin-lock-title">3 Wonders Tarkarli</h1>
+            <p class="admin-lock-subtitle">Property &amp; Tariff Management Portal</p>
+
+            <div class="admin-lock-error" id="lockErrorMsg">
+                Passcode unrecognized. Please re-enter or check below.
+            </div>
+
+            <form id="adminLoginForm">
+                <div class="admin-lock-field">
+                    <label for="adminPassInput">Master Passcode</label>
+                    <div class="admin-input-wrap">
+                        <input type="password" id="adminPassInput" placeholder="Enter owner passcode" required autofocus autocomplete="current-password">
+                        <button type="button" class="admin-pwd-toggle" id="pwdToggleBtn" aria-label="Toggle passcode visibility">
+                            <i data-lucide="eye" style="width:16px;height:16px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="admin-lock-btn" id="unlockSubmitBtn">
+                    <span>Unlock Portal</span>
+                    <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+                </button>
+            </form>
+
+            <div class="admin-lock-hint">
+                <span>Default Passcode:</span>
+                <code>admin3wonders</code>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         2. AUTHENTICATED MANAGEMENT DASHBOARD
+         ============================================================ -->
+    <div id="adminApp" style="display:none; flex-direction:column; min-height:100vh;">
+        <!-- Top Navigation Bar -->
+        <header class="admin-navbar">
+            <div class="admin-brand">
+                <img src="photos/logo.png" alt="3 Wonders Logo">
+                <div style="display:flex; align-items:baseline; gap:0.5rem;">
+                    <span class="admin-brand-title">3 Wonders Tarkarli</span>
+                    <span class="admin-brand-badge">Property Admin</span>
+                </div>
+            </div>
+
+            <div class="admin-nav-actions">
+                <div class="admin-status-pill">
+                    <span class="status-dot"></span>
+                    <span>Live Changes Active</span>
+                </div>
+
+                <a href="index.html" target="_blank" class="admin-btn-preview">
+                    <span>Live Website</span>
+                    <i data-lucide="external-link" style="width:13px;height:13px;"></i>
+                </a>
+
+                <button class="admin-btn-logout" id="adminLogoutBtn">
+                    <i data-lucide="log-out" style="width:14px;height:14px;"></i>
+                    <span>Log Out</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="admin-tabs-nav" aria-label="Admin Navigation Tabs">
+            <button class="admin-tab-btn active" data-tab="tabRooms">
+                <i data-lucide="bed" style="width:17px;height:17px;"></i>
+                <span>Room Tariffs &amp; Inventory</span>
+            </button>
+            <button class="admin-tab-btn" data-tab="tabReviews">
+                <i data-lucide="message-square" style="width:17px;height:17px;"></i>
+                <span>Guest Testimonials</span>
+            </button>
+            <button class="admin-tab-btn" data-tab="tabExport">
+                <i data-lucide="file-code-2" style="width:17px;height:17px;"></i>
+                <span>Code Export &amp; Sync</span>
+            </button>
+            <button class="admin-tab-btn" data-tab="tabSettings">
+                <i data-lucide="shield" style="width:17px;height:17px;"></i>
+                <span>Security &amp; Defaults</span>
+            </button>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="admin-main-container">
+
+            <!-- ========================================================
+                 TAB 1: ROOMS & PRICES
+                 ======================================================== -->
+            <section class="admin-tab-pane active" id="tabRooms">
+                <!-- Stats Overview -->
+                <div class="admin-stats-grid">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon"><i data-lucide="bed" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <div class="admin-stat-label">Active Accommodations</div>
+                            <div class="admin-stat-val" id="statRoomCount">0</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon"><i data-lucide="tag" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <div class="admin-stat-label">Starting Tariff</div>
+                            <div class="admin-stat-val" id="statMinPrice">₹0</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon"><i data-lucide="award" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <div class="admin-stat-label">Peak Suite Tariff</div>
+                            <div class="admin-stat-val" id="statMaxPrice">₹0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Header -->
+                <div class="admin-card-header-bar">
+                    <div class="admin-section-heading">
+                        <h2>Room Tariffs &amp; Accommodations</h2>
+                        <p>Directly modify nightly room rates, description copy, and amenities. Price changes propagate across booking modals, contact forms, and WhatsApp inquiries in real time.</p>
+                    </div>
+                    <button class="admin-btn-primary" id="openAddRoomBtn">
+                        <i data-lucide="plus" style="width:15px;height:15px;"></i>
+                        <span>Add Accommodation</span>
+                    </button>
+                </div>
+
+                <!-- Rooms Grid List -->
+                <div class="admin-rooms-list" id="adminRoomsContainer">
+                    <!-- Dynamic room cards rendered by JS -->
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 TAB 2: GUEST REVIEWS
+                 ======================================================== -->
+            <section class="admin-tab-pane" id="tabReviews">
+                <!-- Reviews Stats Overview -->
+                <div class="admin-stats-grid">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon"><i data-lucide="message-circle" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <div class="admin-stat-label">Published Reviews</div>
+                            <div class="admin-stat-val" id="statReviewCount">0</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon"><i data-lucide="star" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <div class="admin-stat-label">Average Guest Rating</div>
+                            <div class="admin-stat-val" id="statAvgRating">5.0 ★</div>
+                        </div>
+                    </div>
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-icon"><i data-lucide="thumbs-up" style="width:20px;height:20px;"></i></div>
+                        <div>
+                            <div class="admin-stat-label">5-Star Testimonials</div>
+                            <div class="admin-stat-val" id="stat5StarCount">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section Header -->
+                <div class="admin-card-header-bar">
+                    <div class="admin-section-heading">
+                        <h2>Guest Reviews &amp; Testimonials</h2>
+                        <p>Curate client feedback published on your website homepage. Edit quotes, update star classifications, or delete outdated ratings.</p>
+                    </div>
+                    <button class="admin-btn-primary" id="openAddReviewBtn">
+                        <i data-lucide="plus" style="width:15px;height:15px;"></i>
+                        <span>Add Testimonial</span>
+                    </button>
+                </div>
+
+                <!-- Reviews Cards List -->
+                <div class="admin-reviews-list" id="adminReviewsContainer">
+                    <!-- Dynamic review cards rendered by JS -->
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 TAB 3: EXPORT & CLOUDFLARE SYNC
+                 ======================================================== -->
+            <section class="admin-tab-pane" id="tabExport">
+                <div class="admin-card-header-bar">
+                    <div class="admin-section-heading">
+                        <h2>Code Export &amp; Permanent Sync</h2>
+                        <p>Modifications are live in your browser and for visitors via local storage. To commit your updated rates permanently into git repository or deploy to Cloudflare Workers, export the file below.</p>
+                    </div>
+                    <div style="display:flex; gap:0.75rem;">
+                        <button class="admin-btn-primary" id="downloadDataJsBtn">
+                            <i data-lucide="download" style="width:15px;height:15px;"></i>
+                            <span>Download data.js</span>
+                        </button>
+                        <button class="admin-btn-preview" id="copyDataJsBtn" style="color:var(--color-ocean); border-color:#d5cfc5; background:#ffffff;">
+                            <i data-lucide="copy" style="width:14px;height:14px;"></i>
+                            <span>Copy Code</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div style="background:#ffffff; border:1px solid #e7e4dc; border-radius:4px; padding:1.75rem; margin-bottom:2rem;">
+                    <div style="font-size:0.88rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--color-ocean); margin-bottom:0.6rem;">Deployment Instructions</div>
+                    <ol style="margin-left:1.25rem; font-size:0.92rem; color:#475569; line-height:1.75;">
+                        <li>Click <strong>Download data.js</strong> to save your current configuration.</li>
+                        <li>Replace your project's root <code>data.js</code> with the downloaded file.</li>
+                        <li>Run <code>git commit</code> or deploy to Cloudflare Workers. Your updated tariffs and reviews will be permanently served worldwide.</li>
+                    </ol>
+                </div>
+
+                <div style="background:#091e2f; border-radius:4px; padding:1.75rem; color:#cbd5e1; overflow-x:auto; border:1px solid rgba(255,255,255,0.06);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.85rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.6rem;">
+                        <span style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; color:#cbd5e1;">Generated data.js Payload</span>
+                        <span style="font-size:0.72rem; color:#94a3b8;">UTF-8 JavaScript Module</span>
+                    </div>
+                    <pre id="dataJsCodePreview" style="font-family:'Courier New', monospace; font-size:0.84rem; line-height:1.55; max-height:440px; overflow-y:auto;"></pre>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 TAB 4: SETTINGS & SECURITY
+                 ======================================================== -->
+            <section class="admin-tab-pane" id="tabSettings">
+                <div class="admin-card-header-bar">
+                    <div class="admin-section-heading">
+                        <h2>Security Credentials &amp; System Defaults</h2>
+                        <p>Change your private master passcode or restore default factory data configuration.</p>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:2.25rem;">
+                    <!-- Change Password Card -->
+                    <div style="background:#ffffff; border:1px solid #e7e4dc; border-radius:4px; padding:2.25rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                        <h3 style="font-family:var(--font-serif); font-size:1.4rem; color:var(--color-ocean); margin-bottom:0.4rem; font-weight:500;">Update Master Passcode</h3>
+                        <p style="font-size:0.88rem; color:#64748b; margin-bottom:1.75rem; line-height:1.5;">Change the authentication secret required to unlock the administration portal.</p>
+
+                        <form id="changePasswordForm">
+                            <div style="margin-bottom:1.25rem;">
+                                <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.45rem; color:var(--color-ocean);">Current Passcode</label>
+                                <input type="password" id="currPassInput" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; background:#faf9f6; font-size:0.95rem;">
+                            </div>
+                            <div style="margin-bottom:1.75rem;">
+                                <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.45rem; color:var(--color-ocean);">New Passcode (Min. 4 Characters)</label>
+                                <input type="password" id="newPassInput" minlength="4" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; background:#faf9f6; font-size:0.95rem;">
+                            </div>
+                            <button type="submit" class="admin-btn-primary" style="width:100%; justify-content:center;">
+                                Save New Passcode
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Factory Reset Card -->
+                    <div style="background:#ffffff; border:1px solid #e7e4dc; border-radius:4px; padding:2.25rem; box-shadow:0 1px 3px rgba(0,0,0,0.03);">
+                        <h3 style="font-family:var(--font-serif); font-size:1.4rem; color:#991b1b; margin-bottom:0.4rem; font-weight:500;">Revert to Factory Data</h3>
+                        <p style="font-size:0.88rem; color:#64748b; margin-bottom:1.75rem; line-height:1.5;">Clear browser storage overrides and restore default baseline tariffs and testimonials.</p>
+
+                        <div style="background:#fef2f2; border:1px solid #fecaca; padding:1.15rem; border-radius:3px; margin-bottom:1.75rem; font-size:0.84rem; color:#991b1b; line-height:1.55;">
+                            <strong>Baseline Defaults:</strong><br>
+                            • AC Sea View: ₹2,800 / night<br>
+                            • AC Mountain View: ₹2,400 / night<br>
+                            • AC Family Suite: ₹3,800 / night<br>
+                            • Default 5 verified guest reviews
+                        </div>
+
+                        <button type="button" class="admin-btn-preview" id="resetDefaultsBtn" style="width:100%; justify-content:center; border-color:#f87171; color:#991b1b; background:#ffffff;">
+                            <i data-lucide="rotate-ccw" style="width:15px;height:15px;"></i>
+                            <span>Restore Default Values</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- ============================================================
+         3. MODALS (ROOM EDIT & REVIEW EDIT)
+         ============================================================ -->
+
+    <!-- Room Edit / Add Modal -->
+    <div class="admin-modal-backdrop" id="roomModalBackdrop">
+        <div class="admin-modal-window">
+            <button class="admin-modal-close-btn" id="closeRoomModalBtn" aria-label="Close modal">
+                <i data-lucide="x" style="width:18px;height:18px;"></i>
+            </button>
+            <h3 style="font-family:var(--font-serif); font-size:1.65rem; color:var(--color-ocean); font-weight:500; margin-bottom:0.35rem;" id="roomModalTitle">Accommodation Configuration</h3>
+            <p style="font-size:0.88rem; color:#64748b; margin-bottom:1.75rem;">Configure nightly room tariffs, descriptions, and amenities.</p>
+
+            <form id="roomForm">
+                <input type="hidden" id="rf-id">
+
+                <div style="margin-bottom:1.25rem;">
+                    <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Accommodation Name</label>
+                    <input type="text" id="rf-name" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.95rem;">
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Nightly Tariff (₹)</label>
+                        <input type="number" id="rf-price" min="500" max="50000" step="50" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-weight:600; font-size:1.1rem; font-family:var(--font-serif); color:var(--color-ocean);">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Tariff Qualifier</label>
+                        <input type="text" id="rf-priceNote" placeholder="per night + taxes" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.95rem;">
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Orientation / View Category</label>
+                        <select id="rf-view" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; background:#faf9f6; font-size:0.92rem; color:var(--color-ocean);">
+                            <option value="Sea View">Sea View</option>
+                            <option value="Mountain / Garden View">Mountain / Garden View</option>
+                            <option value="Family Suite">Family Suite</option>
+                            <option value="Resort View">Resort View</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Photo Asset Path</label>
+                        <input type="text" id="rf-image" value="photos/SEA VIEW DELUXE.jpeg" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.92rem;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:1.25rem;">
+                    <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Overview Tagline</label>
+                    <input type="text" id="rf-shortDesc" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.95rem;">
+                </div>
+
+                <div style="margin-bottom:1.25rem;">
+                    <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Full Room Narrative</label>
+                    <textarea id="rf-description" rows="3" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-family:var(--font-sans); font-size:0.92rem; line-height:1.5;"></textarea>
+                </div>
+
+                <div style="margin-bottom:2rem;">
+                    <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Amenities (Comma Delimited)</label>
+                    <input type="text" id="rf-amenities" placeholder="Air Conditioning, TV, Wi-Fi, Attached Bathroom, Room Service" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.92rem;">
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+                    <button type="button" class="admin-btn-preview" id="cancelRoomBtn" style="color:#64748b; border-color:#d5cfc5; background:#ffffff;">Cancel</button>
+                    <button type="submit" class="admin-btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Edit / Add Modal -->
+    <div class="admin-modal-backdrop" id="reviewModalBackdrop">
+        <div class="admin-modal-window">
+            <button class="admin-modal-close-btn" id="closeReviewModalBtn" aria-label="Close modal">
+                <i data-lucide="x" style="width:18px;height:18px;"></i>
+            </button>
+            <h3 style="font-family:var(--font-serif); font-size:1.65rem; color:var(--color-ocean); font-weight:500; margin-bottom:0.35rem;" id="reviewModalTitle">Curate Testimonial</h3>
+            <p style="font-size:0.88rem; color:#64748b; margin-bottom:1.75rem;">Manage guest reviews showcased on your public landing page.</p>
+
+            <form id="reviewForm">
+                <input type="hidden" id="rev-id">
+
+                <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Guest Name</label>
+                        <input type="text" id="rev-name" placeholder="e.g. Rahul Sharma" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.95rem;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Rating Assessment</label>
+                        <select id="rev-rating" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; background:#faf9f6; font-size:0.95rem; color:var(--color-ocean);">
+                            <option value="5">★★★★★ (5 Stars)</option>
+                            <option value="4">★★★★☆ (4 Stars)</option>
+                            <option value="3">★★★☆☆ (3 Stars)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Platform / Verified Source</label>
+                        <input type="text" id="rev-source" placeholder="Google Review / Family Stay / Booking.com" required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.95rem;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Stay Date / Period</label>
+                        <input type="text" id="rev-date" placeholder="e.g. October 2026" style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-size:0.95rem;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom:2rem;">
+                    <label style="display:block; font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.4rem; color:var(--color-ocean);">Client Feedback Quote</label>
+                    <textarea id="rev-text" rows="4" placeholder="Enter guest experience feedback..." required style="width:100%; padding:0.85rem; border:1px solid #dcd7cf; border-radius:3px; font-family:var(--font-sans); font-size:0.92rem; line-height:1.6;"></textarea>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+                    <button type="button" class="admin-btn-preview" id="cancelReviewBtn" style="color:#64748b; border-color:#d5cfc5; background:#ffffff;">Cancel</button>
+                    <button type="submit" class="admin-btn-primary">Publish Testimonial</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Toast Notification Container -->
+    <div class="admin-toast-container" id="adminToastContainer"></div>
+
+    <!-- Data and Core Logic -->
+    <script src="data.js?v=10"></script>
+    <script src="admin.js?v=10"></script>
+</body>
+
+</html>

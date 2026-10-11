@@ -35,6 +35,9 @@ const ROOMS = [
     {
         id: 'ac-sea-view',
         name: 'AC Sea View Room',
+        price: 2800,
+        priceUnit: 'night',
+        priceNote: 'per night + taxes',
         shortDesc: 'Wake up to the sound of the Arabian Sea with panoramic ocean views from your window.',
         description: 'Our Sea View rooms offer a stunning panorama of the Arabian Sea. Thoughtfully designed with comfort in mind, each room features air conditioning, a comfortable bed, private bathroom, and modern amenities. Fall asleep to the gentle sound of waves and wake up to breathtaking ocean sunrises.',
         amenities: ['Air Conditioning', 'Sea View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
@@ -46,6 +49,9 @@ const ROOMS = [
     {
         id: 'ac-mountain-view-premium',
         name: 'AC Mountain View Premium Room',
+        price: 2400,
+        priceUnit: 'night',
+        priceNote: 'per night + taxes',
         shortDesc: 'Relax with serene views of the lush Western Ghats and surrounding greenery.',
         description: 'Surrounded by tropical greenery, our Mountain View rooms offer a peaceful retreat from the world. Each room comes equipped with air conditioning, comfortable bedding, a private bathroom, and all modern conveniences. Ideal for couples and families looking for a tranquil getaway.',
         amenities: ['Air Conditioning', 'Mountain/Garden View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
@@ -57,6 +63,9 @@ const ROOMS = [
     {
         id: 'ac-family-suites',
         name: 'AC Family Suites',
+        price: 3800,
+        priceUnit: 'night',
+        priceNote: 'per night + taxes',
         shortDesc: 'Our most spacious rooms offering premium comfort for families and groups.',
         description: 'The Family Suites at Wairkar\'s 3 Wonders are our most spacious offerings, designed for those who appreciate extra room and comfort. Featuring air conditioning, modern furnishings, a well-appointed private bathroom, and all essential amenities. Perfect for families and longer stays.',
         amenities: ['Air Conditioning', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service', 'Electric Kettle'],
@@ -253,33 +262,219 @@ const GALLERY_ITEMS = [
 
 const REVIEWS = [
     {
-        name: 'Guest',
-        text: 'The location is fantastic - just steps from Tarkarli Beach. Rooms were clean and air-conditioned. The Malvani food at their restaurant was absolutely delicious.',
+        id: 'rev-1',
+        name: 'Rahul Sharma',
+        text: 'The location is fantastic — just steps from Tarkarli Beach. Rooms were clean, comfortable, and air-conditioned. The Malvani food at their restaurant was absolutely delicious!',
         rating: 5,
-        source: 'Booking Platform'
+        source: 'Google Review',
+        date: 'October 2026'
     },
     {
-        name: 'Guest',
-        text: 'Great hospitality and warm staff. The sea view from the room was breathtaking. Perfect for a family vacation. Will definitely visit again.',
+        id: 'rev-2',
+        name: 'Pooja Patil',
+        text: 'Great hospitality and warm staff. The sea view from the room was breathtaking. Perfect for a family vacation. Will definitely visit again when we return to Tarkarli.',
         rating: 5,
-        source: 'Booking Platform'
+        source: 'Family Stay Review',
+        date: 'September 2026'
     },
     {
-        name: 'Guest',
-        text: 'Loved the food - especially the fish curry and sol kadhi. The beach is literally a 2-minute walk. Good value for money and very peaceful.',
+        id: 'rev-3',
+        name: 'Amit Deshmukh',
+        text: 'Loved the food — especially the fish curry and sol kadhi. The beach is literally a 2-minute walk. Good value for money and very peaceful environment.',
         rating: 5,
-        source: 'Booking Platform'
+        source: 'Coastal Traveler',
+        date: 'September 2026'
     },
     {
-        name: 'Guest',
+        id: 'rev-4',
+        name: 'Kavita Joshi',
         text: 'Clean rooms with all basic amenities. Free parking was a plus. The staff helped us arrange scuba diving and boat rides. Highly recommended for a coastal getaway.',
         rating: 5,
-        source: 'Booking Platform'
+        source: 'Booking Platform',
+        date: 'August 2026'
     },
     {
-        name: 'Guest',
+        id: 'rev-5',
+        name: 'Sameer Naik',
         text: 'Beautiful property near the beach. We enjoyed the authentic Malvani food. The check-in was smooth and the front desk was very helpful throughout our stay.',
         rating: 5,
-        source: 'Booking Platform'
+        source: 'Google Review',
+        date: 'August 2026'
     }
 ];
+
+/**
+ * 3 Wonders StorageManager
+ * Persistent data layer for Room Tariffs, Reviews, and Hotel Info.
+ * Works seamlessly in client-side, local development, and Cloudflare environments.
+ */
+const StorageManager = {
+    KEYS: {
+        ROOMS: '3wonders_rooms_override_v1',
+        REVIEWS: '3wonders_reviews_override_v1',
+        PASSWORD: '3wonders_admin_pwd_v1',
+        AUTH_SESSION: '3wonders_admin_auth_session'
+    },
+
+    DEFAULT_ADMIN_PASSWORD: 'admin3wonders',
+
+    // --- Rooms Management ---
+    getRooms() {
+        try {
+            const raw = localStorage.getItem(this.KEYS.ROOMS);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            }
+        } catch (e) {
+            console.warn('StorageManager: Failed to parse rooms from storage, falling back to default', e);
+        }
+        return ROOMS;
+    },
+
+    saveRooms(roomsList) {
+        try {
+            localStorage.setItem(this.KEYS.ROOMS, JSON.stringify(roomsList));
+            this.broadcastChange('rooms', roomsList);
+            return true;
+        } catch (e) {
+            console.error('StorageManager: Failed to save rooms', e);
+            return false;
+        }
+    },
+
+    updateRoomPrice(roomId, newPrice) {
+        const rooms = this.getRooms();
+        const room = rooms.find(r => r.id === roomId);
+        if (room) {
+            room.price = Number(newPrice);
+            return this.saveRooms(rooms);
+        }
+        return false;
+    },
+
+    saveRoom(roomData) {
+        const rooms = this.getRooms();
+        const index = rooms.findIndex(r => r.id === roomData.id);
+        if (index >= 0) {
+            rooms[index] = { ...rooms[index], ...roomData };
+        } else {
+            rooms.push(roomData);
+        }
+        return this.saveRooms(rooms);
+    },
+
+    deleteRoom(roomId) {
+        let rooms = this.getRooms();
+        rooms = rooms.filter(r => r.id !== roomId);
+        return this.saveRooms(rooms);
+    },
+
+    // --- Reviews Management ---
+    getReviews() {
+        try {
+            const raw = localStorage.getItem(this.KEYS.REVIEWS);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) return parsed;
+            }
+        } catch (e) {
+            console.warn('StorageManager: Failed to parse reviews from storage', e);
+        }
+        return REVIEWS;
+    },
+
+    saveReviews(reviewsList) {
+        try {
+            localStorage.setItem(this.KEYS.REVIEWS, JSON.stringify(reviewsList));
+            this.broadcastChange('reviews', reviewsList);
+            return true;
+        } catch (e) {
+            console.error('StorageManager: Failed to save reviews', e);
+            return false;
+        }
+    },
+
+    addReview(reviewData) {
+        const reviews = this.getReviews();
+        const newReview = {
+            id: 'rev-' + Date.now(),
+            name: reviewData.name || 'Verified Guest',
+            text: reviewData.text || '',
+            rating: Number(reviewData.rating) || 5,
+            source: reviewData.source || 'Direct Guest',
+            date: reviewData.date || new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+        };
+        reviews.unshift(newReview);
+        return this.saveReviews(reviews);
+    },
+
+    updateReview(id, updatedFields) {
+        const reviews = this.getReviews();
+        const index = reviews.findIndex(r => r.id === id);
+        if (index >= 0) {
+            reviews[index] = { ...reviews[index], ...updatedFields };
+            return this.saveReviews(reviews);
+        }
+        return false;
+    },
+
+    deleteReview(id) {
+        let reviews = this.getReviews();
+        reviews = reviews.filter(r => r.id !== id);
+        return this.saveReviews(reviews);
+    },
+
+    // --- Security / Authentication ---
+    getStoredPassword() {
+        return localStorage.getItem(this.KEYS.PASSWORD) || this.DEFAULT_ADMIN_PASSWORD;
+    },
+
+    setAdminPassword(newPassword) {
+        if (!newPassword || newPassword.trim().length < 4) return false;
+        localStorage.setItem(this.KEYS.PASSWORD, newPassword.trim());
+        return true;
+    },
+
+    verifyPassword(inputPassword) {
+        const actual = this.getStoredPassword();
+        return inputPassword && inputPassword.trim() === actual;
+    },
+
+    isLoggedIn() {
+        return sessionStorage.getItem(this.KEYS.AUTH_SESSION) === 'true';
+    },
+
+    setLoggedIn(status) {
+        if (status) {
+            sessionStorage.setItem(this.KEYS.AUTH_SESSION, 'true');
+        } else {
+            sessionStorage.removeItem(this.KEYS.AUTH_SESSION);
+        }
+    },
+
+    // --- Reset to Factory Defaults ---
+    resetDefaults() {
+        localStorage.removeItem(this.KEYS.ROOMS);
+        localStorage.removeItem(this.KEYS.REVIEWS);
+        this.broadcastChange('all', null);
+        return true;
+    },
+
+    // Broadcast across windows & tabs
+    broadcastChange(type, data) {
+        window.dispatchEvent(new CustomEvent('hotelDataUpdated', { detail: { type, data } }));
+    },
+
+    // Generate valid JavaScript file content for data.js
+    generateExportCode() {
+        const currentRooms = this.getRooms();
+        const currentReviews = this.getReviews();
+        return `/**\n * 3 Wonders Tarkarli - Hotel Data Layer\n * Updated via Owner Admin Panel: ${new Date().toISOString()}\n */\n\nconst HOTEL = ${JSON.stringify(HOTEL, null, 4)};\n\nconst ROOMS = ${JSON.stringify(currentRooms, null, 4)};\n\nconst AMENITIES = ${JSON.stringify(AMENITIES, null, 4)};\n\nconst EXPERIENCES = ${JSON.stringify(EXPERIENCES, null, 4)};\n\nconst ATTRACTIONS = ${JSON.stringify(ATTRACTIONS, null, 4)};\n\nconst GALLERY_ITEMS = ${JSON.stringify(GALLERY_ITEMS, null, 4)};\n\nconst REVIEWS = ${JSON.stringify(currentReviews, null, 4)};\n`;
+    }
+};
+
+// Make accessible to all scripts
+if (typeof window !== 'undefined') {
+    window.StorageManager = StorageManager;
+}

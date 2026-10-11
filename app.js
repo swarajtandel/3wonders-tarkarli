@@ -45,30 +45,121 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Navigation Logic
     // Handle Sticky Nav
     const handleScroll = () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        const siteHeader = document.querySelector('.site-header') || navbar;
+        if (siteHeader) {
+            if (window.scrollY > 40) {
+                siteHeader.classList.add('scrolled');
+            } else {
+                siteHeader.classList.remove('scrolled');
+            }
         }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); // Init
 
-    // Mobile Menu
-    const toggleMobileNav = () => {
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', !isExpanded);
-        mobileNav.classList.toggle('active');
-        document.body.style.overflow = isExpanded ? '' : 'hidden';
+    // 3a. Three Dots ("More") Navigation Dropdown (Gallery, Location, Contact Us)
+    const navMoreTrigger = document.getElementById('navMoreTrigger');
+    const navDropdownMenu = document.getElementById('navDropdownMenu');
+
+    if (navMoreTrigger && navDropdownMenu) {
+        navMoreTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = navDropdownMenu.classList.contains('active');
+            if (isOpen) {
+                navDropdownMenu.classList.remove('active');
+                navMoreTrigger.classList.remove('active');
+                navMoreTrigger.setAttribute('aria-expanded', 'false');
+            } else {
+                navDropdownMenu.classList.add('active');
+                navMoreTrigger.classList.add('active');
+                navMoreTrigger.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Close dropdown when clicking anywhere outside
+        document.addEventListener('click', (e) => {
+            if (!navDropdownMenu.contains(e.target) && !navMoreTrigger.contains(e.target)) {
+                navDropdownMenu.classList.remove('active');
+                navMoreTrigger.classList.remove('active');
+                navMoreTrigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navDropdownMenu.classList.contains('active')) {
+                navDropdownMenu.classList.remove('active');
+                navMoreTrigger.classList.remove('active');
+                navMoreTrigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // 3b. Mobile Drawer Navigation Menu (Both Modern and Legacy)
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const drawerClose = document.getElementById('drawerClose');
+
+    const toggleDrawer = (open) => {
+        if (!mobileDrawer) return;
+        const shouldOpen = typeof open === 'boolean' ? open : !mobileDrawer.classList.contains('active');
+        if (shouldOpen) {
+            mobileDrawer.classList.add('active');
+            mobileDrawer.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        } else {
+            mobileDrawer.classList.remove('active');
+            mobileDrawer.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        }
     };
 
-    navToggle.addEventListener('click', toggleMobileNav);
-    mobileNavClose.addEventListener('click', toggleMobileNav);
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDrawer(true);
+        });
+    }
 
-    mobileNavLinks.forEach(link => {
-        link.addEventListener('click', toggleMobileNav);
-    });
+    if (drawerClose) {
+        drawerClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDrawer(false);
+        });
+    }
+
+    if (mobileDrawer) {
+        // Clicking backdrop closes drawer
+        mobileDrawer.addEventListener('click', (e) => {
+            if (e.target === mobileDrawer) {
+                toggleDrawer(false);
+            }
+        });
+
+        // Close drawer when any drawer navigation link is clicked
+        const drawerLinks = mobileDrawer.querySelectorAll('.drawer-nav-list a');
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', () => toggleDrawer(false));
+        });
+    }
+
+    // Fallback for legacy mobile nav elements if present
+    if (navToggle && mobileNav) {
+        const toggleLegacyMobileNav = () => {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = isExpanded ? '' : 'hidden';
+        };
+
+        navToggle.addEventListener('click', toggleLegacyMobileNav);
+        if (mobileNavClose) mobileNavClose.addEventListener('click', toggleLegacyMobileNav);
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleLegacyMobileNav);
+        });
+    }
 
     // 4. Data Injection
 
