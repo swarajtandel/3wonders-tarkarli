@@ -22,7 +22,7 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=13">
 </head>
 
 <body>
@@ -47,30 +47,10 @@
                         <a href="rooms.html" class="nav-link active">Rooms</a>
                         <a href="dining.html" class="nav-link">Dining</a>
                         <a href="experiences.html" class="nav-link">Experiences</a>
+                        <a href="gallery.html" class="nav-link">Gallery</a>
+                        <a href="location.html" class="nav-link">Location</a>
+                        <a href="contact.html" class="nav-link">Contact Us</a>
                     </nav>
-
-                    <div style="position: relative;">
-                        <button class="nav-more-trigger" id="navMoreTrigger" aria-label="Open more navigation links" aria-expanded="false">
-                            <i data-lucide="more-horizontal" style="width: 22px; height: 22px;"></i>
-                        </button>
-
-                        <div class="nav-dropdown-menu" id="navDropdownMenu">
-                            <a href="gallery.html" class="dropdown-item">
-                                <i data-lucide="image" style="width: 18px; height: 18px;"></i> Gallery
-                            </a>
-                            <a href="location.html" class="dropdown-item">
-                                <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i> Location
-                            </a>
-                            <a href="contact.html" class="dropdown-item">
-                                <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i> Contact Us
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-contact-info">
-                                <div>Front Desk: <strong style="color:var(--color-ocean);">+91 98200 49021</strong></div>
-                                <div style="margin-top:2px;">Malvan, Sindhudurg</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="nav-right">
@@ -159,40 +139,7 @@
             </div>
 
             <div class="rooms-grid">
-                <!-- Room 1: AC Sea View Room -->
-                <article class="room-card" data-room-id="ac-sea-view">
-                    <div class="room-card-media">
-                        <img src="photos/SEA VIEW DELUXE.jpeg" alt="AC Sea View Room at 3 Wonders" class="room-card-img" loading="lazy">
-                        <span class="room-card-badge">Sea View</span>
-                    </div>
-                    <div class="room-card-body">
-                        <div class="room-card-header-row">
-                            <h3 class="room-card-title">AC Sea View Room</h3>
-                            <div class="room-card-price">₹2,800 <small>/ night</small></div>
-                        </div>
-                        <p class="room-card-desc">
-                            Wake up to the gentle murmur of the Arabian Sea with panoramic coastal ocean views from your window. Designed for couples and solo travelers looking for serene ocean vibes.
-                        </p>
-                        <div class="room-amenity-tags">
-                            <span class="room-tag">Air Conditioning</span>
-                            <span class="room-tag">Sea View</span>
-                            <span class="room-tag">TV &amp; Wi-Fi</span>
-                            <span class="room-tag">Attached Bathroom</span>
-                            <span class="room-tag">Room Service</span>
-                        </div>
-                        <div class="room-card-actions">
-                            <button class="room-details-btn" onclick="openRoomModal('ac-sea-view')">
-                                View Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
-                            </button>
-                            <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20am%20interested%20in%20booking%20the%20AC%20Sea%20View%20Room."
-                                target="_blank" class="btn btn-book" style="padding:0.6rem 1.2rem; font-size:0.78rem;">
-                                Book Now
-                            </a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Room 2: AC Mountain View Premium Room -->
+                <!-- Room 1: AC Mountain View Premium Room -->
                 <article class="room-card" data-room-id="ac-mountain-view-premium">
                     <div class="room-card-media">
                         <img src="photos/PREMIUM ROOM.jpeg" alt="AC Mountain View Premium Room" class="room-card-img" loading="lazy">
@@ -218,6 +165,39 @@
                                 View Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
                             </button>
                             <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20am%20interested%20in%20booking%20the%20AC%20Mountain%20View%20Premium%20Room."
+                                target="_blank" class="btn btn-book" style="padding:0.6rem 1.2rem; font-size:0.78rem;">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Room 2: AC Sea View Room -->
+                <article class="room-card" data-room-id="ac-sea-view">
+                    <div class="room-card-media">
+                        <img src="photos/SEA VIEW DELUXE.jpeg" alt="AC Sea View Room at 3 Wonders" class="room-card-img" loading="lazy">
+                        <span class="room-card-badge">Sea View</span>
+                    </div>
+                    <div class="room-card-body">
+                        <div class="room-card-header-row">
+                            <h3 class="room-card-title">AC Sea View Room</h3>
+                            <div class="room-card-price">₹2,800 <small>/ night</small></div>
+                        </div>
+                        <p class="room-card-desc">
+                            Wake up to the gentle murmur of the Arabian Sea with panoramic coastal ocean views from your window. Designed for couples and solo travelers looking for serene ocean vibes.
+                        </p>
+                        <div class="room-amenity-tags">
+                            <span class="room-tag">Air Conditioning</span>
+                            <span class="room-tag">Sea View</span>
+                            <span class="room-tag">TV &amp; Wi-Fi</span>
+                            <span class="room-tag">Attached Bathroom</span>
+                            <span class="room-tag">Room Service</span>
+                        </div>
+                        <div class="room-card-actions">
+                            <button class="room-details-btn" onclick="openRoomModal('ac-sea-view')">
+                                View Details <i data-lucide="arrow-right" style="width:14px;height:14px;"></i>
+                            </button>
+                            <a href="https://wa.me/919820049021?text=Hello%203%20Wonders%2C%20I%20am%20interested%20in%20booking%20the%20AC%20Sea%20View%20Room."
                                 target="_blank" class="btn btn-book" style="padding:0.6rem 1.2rem; font-size:0.78rem;">
                                 Book Now
                             </a>
@@ -408,8 +388,8 @@
         </button>
     </div>
 
-    <script src="data.js"></script>
-    <script src="app.js?v=11"></script>
+    <script src="data.js?v=13"></script>
+    <script src="app.js?v=13"></script>
 </body>
 
 </html>

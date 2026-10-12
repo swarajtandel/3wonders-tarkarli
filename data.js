@@ -33,20 +33,6 @@ const HOTEL = {
 
 const ROOMS = [
     {
-        id: 'ac-sea-view',
-        name: 'AC Sea View Room',
-        price: 2800,
-        priceUnit: 'night',
-        priceNote: 'per night + taxes',
-        shortDesc: 'Wake up to the sound of the Arabian Sea with panoramic ocean views from your window.',
-        description: 'Our Sea View rooms offer a stunning panorama of the Arabian Sea. Thoughtfully designed with comfort in mind, each room features air conditioning, a comfortable bed, private bathroom, and modern amenities. Fall asleep to the gentle sound of waves and wake up to breathtaking ocean sunrises.',
-        amenities: ['Air Conditioning', 'Sea View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
-        view: 'Sea View',
-        category: 'rooms',
-        imgLabel: 'AC Sea View Room',
-        image: 'photos/SEA VIEW DELUXE.jpeg'
-    },
-    {
         id: 'ac-mountain-view-premium',
         name: 'AC Mountain View Premium Room',
         price: 2400,
@@ -59,6 +45,20 @@ const ROOMS = [
         category: 'rooms',
         imgLabel: 'AC Mountain View Premium Room',
         image: 'photos/PREMIUM ROOM.jpeg'
+    },
+    {
+        id: 'ac-sea-view',
+        name: 'AC Sea View Room',
+        price: 2800,
+        priceUnit: 'night',
+        priceNote: 'per night + taxes',
+        shortDesc: 'Wake up to the sound of the Arabian Sea with panoramic ocean views from your window.',
+        description: 'Our Sea View rooms offer a stunning panorama of the Arabian Sea. Thoughtfully designed with comfort in mind, each room features air conditioning, a comfortable bed, private bathroom, and modern amenities. Fall asleep to the gentle sound of waves and wake up to breathtaking ocean sunrises.',
+        amenities: ['Air Conditioning', 'Sea View', 'TV', 'Wi-Fi', 'Private Bathroom', 'Room Service'],
+        view: 'Sea View',
+        category: 'rooms',
+        imgLabel: 'AC Sea View Room',
+        image: 'photos/SEA VIEW DELUXE.jpeg'
     },
     {
         id: 'ac-family-suites',
@@ -320,11 +320,19 @@ const StorageManager = {
 
     // --- Rooms Management ---
     getRooms() {
+        const preferredOrder = ['ac-mountain-view-premium', 'ac-sea-view', 'ac-family-suites'];
         try {
             const raw = localStorage.getItem(this.KEYS.ROOMS);
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    parsed.sort((a, b) => {
+                        const idxA = preferredOrder.indexOf(a.id);
+                        const idxB = preferredOrder.indexOf(b.id);
+                        return (idxA !== -1 ? idxA : 999) - (idxB !== -1 ? idxB : 999);
+                    });
+                    return parsed;
+                }
             }
         } catch (e) {
             console.warn('StorageManager: Failed to parse rooms from storage, falling back to default', e);

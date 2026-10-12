@@ -43,11 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const quickBookingForm = document.getElementById('quickBookingForm');
 
     // 3. Navigation Logic
-    // Handle Sticky Nav
+    // Smooth Header Transparency on Scroll (Transparent at top -> Solid white as you scroll down)
     const handleScroll = () => {
         const siteHeader = document.querySelector('.site-header') || navbar;
         if (siteHeader) {
-            if (window.scrollY > 40) {
+            const scrollY = window.scrollY || window.pageYOffset || 0;
+            // Over 0 to 180px scroll, smoothly reduce transparency to 0 (opacity goes 0 -> 1)
+            const opacity = Math.min(1, Math.max(0, scrollY / 180));
+            siteHeader.style.setProperty('--header-bg-opacity', opacity.toFixed(3));
+            if (scrollY > 30) {
                 siteHeader.classList.add('scrolled');
             } else {
                 siteHeader.classList.remove('scrolled');
@@ -56,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Init
+    handleScroll(); // Init on page load
 
     // 3a. Three Dots ("More") Navigation Dropdown (Gallery, Location, Contact Us)
     const navMoreTrigger = document.getElementById('navMoreTrigger');
@@ -163,9 +167,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Data Injection
 
-    // Inject Rooms
-    if (typeof ROOMS !== 'undefined' && roomsShowcase) {
-        ROOMS.forEach(room => {
+    // Helper to get active rooms (from StorageManager if available)
+    const getActiveRooms = () => {
+        if (typeof StorageManager !== 'undefined' && typeof StorageManager.getRooms === 'function') {
+            return StorageManager.getRooms();
+        }
+        return typeof ROOMS !== 'undefined' ? ROOMS : [];
+    };
+
+    // Update starting price tags (e.g. Home page Book Now "From ₹X INR/Night")
+    const updateStartingPriceTags = () => {
+        const rooms = getActiveRooms();
+        if (!rooms || rooms.length === 0) return;
+        const prices = rooms.map(r => Number(r.price) || 0).filter(p => p > 0);
+        if (prices.length === 0) return;
+        const minPrice = Math.min(...prices);
+        const tags = document.querySelectorAll('.starting-price-tag');
+        tags.forEach(tag => {
+            tag.innerHTML = `From <strong>₹${minPrice.toLocaleString('en-IN')} INR</strong>/Night`;
+        });
+    };
+
+    // Update Room Card prices on rooms.html
+    const updateRoomsCardPrices = () => {
+        const rooms = getActiveRooms();
+        if (!rooms || rooms.length === 0) return;
+        rooms.forEach(room => {
+            const card = document.querySelector(`.room-card[data-room-id="${room.id}"]`);
+            if (card) {
+                const priceEl = card.querySelector('.room-card-price');
+                if (priceEl && room.price) {
+                    priceEl.innerHTML = `₹${Number(room.price).toLocaleString('en-IN')} <small>/ night</small>`;
+                }
+            }
+        });
+    };
+
+    // Inject Rooms (Home page or wherever roomsShowcase exists)
+    if (roomsShowcase) {
+        const roomsToRender = getActiveRooms();
+        roomsToRender.forEach(room => {
             const card = document.createElement('div');
             card.className = 'room-card';
             card.innerHTML = `
@@ -188,6 +229,25 @@ document.addEventListener('DOMContentLoaded', () => {
             roomsShowcase.appendChild(card);
         });
     }
+
+    // Initialize prices immediately
+    updateStartingPriceTags();
+    updateRoomsCardPrices();
+
+    // Listen for live room price updates from Admin Panel (custom event & cross-tab storage event)
+    window.addEventListener('hotelDataUpdated', (e) => {
+        if (!e.detail || e.detail.type === 'rooms' || e.detail.type === 'all') {
+            updateStartingPriceTags();
+            updateRoomsCardPrices();
+        }
+    });
+
+    window.addEventListener('storage', (e) => {
+        if (e.key === '3wonders_rooms_override_v1') {
+            updateStartingPriceTags();
+            updateRoomsCardPrices();
+        }
+    });
 
     // Inject Amenities
     if (typeof AMENITIES !== 'undefined' && amenitiesGrid) {
@@ -299,7 +359,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 5. Room Modal Logic
 
     window.openRoomModal = (roomId) => {
-        const room = ROOMS.find(r => r.id === roomId);
+        const allRooms = getActiveRooms();
+        const room = allRooms.find(r => r.id === roomId);
         if (!room) return;
 
         roomModalBody.innerHTML = `
@@ -553,4 +614,209 @@ Thank you.`;
             }, 500);
         });
     }
+
+    // 9. Booking Bar Guest Popover & Booking Submit Handling
+    const guestTrigger = document.getElementById('guestTrigger');
+    const guestPopover = document.getElementById('guestPopover');
+    const guestDisplay = document.getElementById('guestDisplay');
+    const guestCounts = { rooms: 1, adults: 2, children: 0 };
+
+    if (guestTrigger && guestPopover) {
+        guestTrigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            guestPopover.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.counter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const type = btn.dataset.type;
+                const change = parseInt(btn.dataset.change, 10);
+                const min = type === 'rooms' || type === 'adults' ? 1 : 0;
+                guestCounts[type] = Math.max(min, (guestCounts[type] || 0) + change);
+                const valEl = document.getElementById(`val-${type}`);
+                if (valEl) valEl.textContent = guestCounts[type];
+
+                if (guestDisplay) {
+                    const roomText = guestCounts.rooms === 1 ? '1 Room' : `${guestCounts.rooms} Rooms`;
+                    const totalGuests = (guestCounts.adults || 0) + (guestCounts.children || 0);
+                    const guestText = totalGuests === 1 ? '1 Guest' : `${totalGuests} Guests`;
+                    guestDisplay.textContent = `${roomText}, ${guestText}`;
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!guestPopover.contains(e.target) && e.target !== guestTrigger) {
+                guestPopover.classList.remove('active');
+            }
+        });
+    }
+
+    // Booking Bar "Book Now" Button Handler — WhatsApp Redirect with details
+    const bookSubmitBtn = document.getElementById('bookSubmitBtn');
+    if (bookSubmitBtn) {
+        bookSubmitBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const checkinVal = document.getElementById('bookCheckin') ? document.getElementById('bookCheckin').value : '';
+            const checkoutVal = document.getElementById('bookCheckout') ? document.getElementById('bookCheckout').value : '';
+            const promoVal = document.getElementById('bookPromo') ? document.getElementById('bookPromo').value.trim() : '';
+
+            const formatDate = (dateStr) => {
+                if (!dateStr) return '';
+                try {
+                    const parts = dateStr.split('-');
+                    if (parts.length === 3) {
+                        const d = new Date(parts[0], parts[1] - 1, parts[2]);
+                        return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+                    }
+                    return dateStr;
+                } catch (err) {
+                    return dateStr;
+                }
+            };
+
+            const checkinFormatted = checkinVal ? formatDate(checkinVal) : 'Not specified';
+            const checkoutFormatted = checkoutVal ? formatDate(checkoutVal) : 'Not specified';
+
+            let msg = `*Booking Inquiry — 3 Wonders Tarkarli*\n\n`;
+            msg += `📅 *Check-in:* ${checkinFormatted}\n`;
+            msg += `📅 *Check-out:* ${checkoutFormatted}\n`;
+            msg += `🛏️ *Rooms:* ${guestCounts.rooms || 1}\n`;
+            msg += `👥 *Adults:* ${guestCounts.adults || 2}\n`;
+            if ((guestCounts.children || 0) > 0) {
+                msg += `🧒 *Children:* ${guestCounts.children}\n`;
+            }
+            if (promoVal) {
+                msg += `🏷️ *Promo Code:* ${promoVal}\n`;
+            }
+            msg += `\nPlease check room availability and share the best rate. Thank you!`;
+
+            const whatsappUrl = `https://wa.me/919820049021?text=${encodeURIComponent(msg)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
+
+    // 10. "Why Book Direct?" Tooltip Interactivity (Touch & Accessibility)
+    const whyTrigger = document.getElementById('whyBookDirectTrigger');
+    const whyTooltip = document.getElementById('whyBookDirectTooltip');
+    if (whyTrigger && whyTooltip) {
+        whyTrigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const isOpen = whyTooltip.classList.contains('active');
+            whyTooltip.classList.toggle('active', !isOpen);
+            whyTrigger.setAttribute('aria-expanded', (!isOpen).toString());
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!whyTooltip.contains(e.target) && e.target !== whyTrigger) {
+                whyTooltip.classList.remove('active');
+                whyTrigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close on escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && whyTooltip.classList.contains('active')) {
+                whyTooltip.classList.remove('active');
+                whyTrigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // 11. Interactive Horizontal Carousels (Attractions & Experiences)
+    function setupCarousel(trackId, prevBtnId, nextBtnId, autoIntervalMs = 0) {
+        const track = document.getElementById(trackId);
+        const prevBtn = document.getElementById(prevBtnId);
+        const nextBtn = document.getElementById(nextBtnId);
+
+        if (!track) return;
+
+        const getScrollStep = () => {
+            const firstCard = track.firstElementChild;
+            if (firstCard) {
+                const gap = parseFloat(window.getComputedStyle(track).gap) || 24;
+                return firstCard.offsetWidth + gap;
+            }
+            return 360;
+        };
+
+        const scrollNext = () => {
+            const step = getScrollStep();
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            if (track.scrollLeft >= maxScroll - 15) {
+                // Smooth loop back to the beginning
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: step, behavior: 'smooth' });
+            }
+        };
+
+        const scrollPrev = () => {
+            const step = getScrollStep();
+            const maxScroll = track.scrollWidth - track.clientWidth;
+            if (track.scrollLeft <= 15) {
+                // Loop to the end
+                track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: -step, behavior: 'smooth' });
+            }
+        };
+
+        let autoTimer = null;
+        const startAutoScroll = () => {
+            if (autoIntervalMs > 0 && !autoTimer) {
+                autoTimer = setInterval(() => {
+                    if (!document.hidden) {
+                        scrollNext();
+                    }
+                }, autoIntervalMs);
+            }
+        };
+
+        const stopAutoScroll = () => {
+            if (autoTimer) {
+                clearInterval(autoTimer);
+                autoTimer = null;
+            }
+        };
+
+        const resetAutoScroll = () => {
+            stopAutoScroll();
+            startAutoScroll();
+        };
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                scrollNext();
+                resetAutoScroll();
+            });
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                scrollPrev();
+                resetAutoScroll();
+            });
+        }
+
+        // Pause auto-scroll on hover or touch so user can interact comfortably
+        if (autoIntervalMs > 0) {
+            track.addEventListener('mouseenter', stopAutoScroll, { passive: true });
+            track.addEventListener('mouseleave', startAutoScroll, { passive: true });
+            track.addEventListener('touchstart', stopAutoScroll, { passive: true });
+            track.addEventListener('touchend', startAutoScroll, { passive: true });
+
+            startAutoScroll();
+        }
+    }
+
+    // Destination Highlights (Explore Tarkarli & Beyond) — working left/right buttons & 2-second auto-scroll
+    setupCarousel('attractionsTrack', 'attrPrevBtn', 'attrNextBtn', 2000);
+
+    // Experiences Preview Carousel — working left/right buttons & 2-second auto-scroll
+    setupCarousel('experiencesTrack', 'expPrevBtn', 'expNextBtn', 2000);
 });

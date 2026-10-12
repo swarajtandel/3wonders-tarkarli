@@ -22,18 +22,18 @@
         content="Where the Arabian Sea meets Konkan hospitality. Steps from Tarkarli beach with authentic Malvani seafood, spacious AC rooms, and coastal adventures.">
     <meta property="og:image" content="photos/PARKING 4.jpeg">
 
-    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-Serif) -->
+    <!-- Google Fonts: Playfair Display, Inter & Comparison Fonts (Lato, Manrope, Source Sans 3, Raleway, Cormorant Garamond) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Lato:wght@400;500;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Raleway:wght@400;500;600&family=Source+Sans+3:wght@400;500;600&display=swap"
         rel="stylesheet">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=23">
 
     <!-- Structured Data (Schema.org) -->
     <script type="application/ld+json">
@@ -86,31 +86,10 @@
                         <a href="rooms.html" class="nav-link">Rooms</a>
                         <a href="dining.html" class="nav-link">Dining</a>
                         <a href="experiences.html" class="nav-link">Experiences</a>
+                        <a href="gallery.html" class="nav-link">Gallery</a>
+                        <a href="location.html" class="nav-link">Location</a>
+                        <a href="contact.html" class="nav-link">Contact Us</a>
                     </nav>
-
-                    <!-- Hamburger Icon beside Primary Nav (Dropdown Menu) -->
-                    <div style="position: relative;">
-                        <button class="nav-more-trigger" id="navMoreTrigger" aria-label="Open more navigation links" aria-expanded="false">
-                            <i data-lucide="more-horizontal" style="width: 22px; height: 22px;"></i>
-                        </button>
-
-                        <div class="nav-dropdown-menu" id="navDropdownMenu">
-                            <a href="gallery.html" class="dropdown-item">
-                                <i data-lucide="image" style="width: 18px; height: 18px;"></i> Gallery
-                            </a>
-                            <a href="location.html" class="dropdown-item">
-                                <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i> Location
-                            </a>
-                            <a href="contact.html" class="dropdown-item">
-                                <i data-lucide="phone-call" style="width: 18px; height: 18px;"></i> Contact Us
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown-contact-info">
-                                <div>Front Desk: <strong style="color:var(--color-ocean);">+91 98200 49021</strong></div>
-                                <div style="margin-top:2px;">Malvan, Sindhudurg</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Right Action: Prominent Book Now Button -->
@@ -145,13 +124,18 @@
             </div>
 
             <nav class="drawer-nav-list" aria-label="Mobile Navigation">
-                <a href="index.html" class="active">About Us <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="index.html" class="active">About Us <i data-lucide="chevron-right"
+                        style="width: 16px; height: 16px;"></i></a>
                 <a href="rooms.html">Rooms <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
                 <a href="dining.html">Dining <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
-                <a href="experiences.html">Experiences <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
-                <a href="gallery.html">Gallery <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
-                <a href="location.html">Location <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
-                <a href="contact.html">Contact Us <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i></a>
+                <a href="experiences.html">Experiences <i data-lucide="chevron-right"
+                        style="width: 16px; height: 16px;"></i></a>
+                <a href="gallery.html">Gallery <i data-lucide="chevron-right"
+                        style="width: 16px; height: 16px;"></i></a>
+                <a href="location.html">Location <i data-lucide="chevron-right"
+                        style="width: 16px; height: 16px;"></i></a>
+                <a href="contact.html">Contact Us <i data-lucide="chevron-right"
+                        style="width: 16px; height: 16px;"></i></a>
             </nav>
 
             <div class="drawer-actions">
@@ -177,10 +161,12 @@
         <div class="hero-overlay"></div>
 
         <!-- Left & Right Carousel Arrows (Visual Match to Reference Screenshot 1) -->
-        <button class="hero-arrow hero-arrow-left" aria-label="Previous Slide" onclick="window.scrollTo({top: window.innerHeight * 0.8, behavior:'smooth'})">
+        <button class="hero-arrow hero-arrow-left" aria-label="Previous Slide"
+            onclick="window.scrollTo({top: window.innerHeight * 0.8, behavior:'smooth'})">
             <i data-lucide="chevron-left" style="width: 26px; height: 26px;"></i>
         </button>
-        <button class="hero-arrow hero-arrow-right" aria-label="Next Slide" onclick="window.scrollTo({top: window.innerHeight * 0.8, behavior:'smooth'})">
+        <button class="hero-arrow hero-arrow-right" aria-label="Next Slide"
+            onclick="window.scrollTo({top: window.innerHeight * 0.8, behavior:'smooth'})">
             <i data-lucide="chevron-right" style="width: 26px; height: 26px;"></i>
         </button>
 
@@ -222,25 +208,31 @@
                             <div class="guest-counter-row">
                                 <span class="guest-counter-label">Rooms</span>
                                 <div class="guest-counter-controls">
-                                    <button class="counter-btn" data-type="rooms" data-change="-1" aria-label="Decrease Rooms">-</button>
+                                    <button class="counter-btn" data-type="rooms" data-change="-1"
+                                        aria-label="Decrease Rooms">-</button>
                                     <span class="counter-val" id="val-rooms">1</span>
-                                    <button class="counter-btn" data-type="rooms" data-change="1" aria-label="Increase Rooms">+</button>
+                                    <button class="counter-btn" data-type="rooms" data-change="1"
+                                        aria-label="Increase Rooms">+</button>
                                 </div>
                             </div>
                             <div class="guest-counter-row">
                                 <span class="guest-counter-label">Adults</span>
                                 <div class="guest-counter-controls">
-                                    <button class="counter-btn" data-type="adults" data-change="-1" aria-label="Decrease Adults">-</button>
+                                    <button class="counter-btn" data-type="adults" data-change="-1"
+                                        aria-label="Decrease Adults">-</button>
                                     <span class="counter-val" id="val-adults">2</span>
-                                    <button class="counter-btn" data-type="adults" data-change="1" aria-label="Increase Adults">+</button>
+                                    <button class="counter-btn" data-type="adults" data-change="1"
+                                        aria-label="Increase Adults">+</button>
                                 </div>
                             </div>
                             <div class="guest-counter-row">
                                 <span class="guest-counter-label">Children</span>
                                 <div class="guest-counter-controls">
-                                    <button class="counter-btn" data-type="children" data-change="-1" aria-label="Decrease Children">-</button>
+                                    <button class="counter-btn" data-type="children" data-change="-1"
+                                        aria-label="Decrease Children">-</button>
                                     <span class="counter-val" id="val-children">0</span>
-                                    <button class="counter-btn" data-type="children" data-change="1" aria-label="Increase Children">+</button>
+                                    <button class="counter-btn" data-type="children" data-change="1"
+                                        aria-label="Increase Children">+</button>
                                 </div>
                             </div>
                         </div>
@@ -257,7 +249,7 @@
 
                     <!-- Action: Price & Book Now -->
                     <div class="booking-cta-block">
-                        <div class="starting-price-tag">From <strong>₹2,800 INR</strong>/Night</div>
+                        <div class="starting-price-tag">From <strong>₹2,400 INR</strong>/Night</div>
                         <button type="button" id="bookSubmitBtn" class="booking-submit-btn">
                             BOOK NOW
                         </button>
@@ -266,7 +258,81 @@
 
                 <!-- Sublinks Under Booking Bar -->
                 <div class="booking-sublinks">
-                    <span>Why Book Direct? Best Rate Guaranteed · Fast WhatsApp Confirmation</span>
+                    <div class="why-book-direct-wrap">
+                        <button type="button" class="why-book-direct-trigger" id="whyBookDirectTrigger" aria-haspopup="true" aria-expanded="false">
+                            Why Book Direct?
+                        </button>
+                        <div class="why-book-direct-tooltip" id="whyBookDirectTooltip" role="tooltip">
+                            <ul class="why-direct-list">
+                                <li class="why-direct-item">
+                                    <span class="why-direct-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m16 2-2.3 2.3a3 3 0 0 0 0 4.2l1.8 1.8a3 3 0 0 0 4.2 0L22 8Z"/>
+                                            <path d="M15 15 3.3 3.3a4.2 4.2 0 0 0 0 6l7.3 7.3c.7.7 2 .7 2.8 0L15 15Zm0 0 7 7"/>
+                                            <path d="m2.1 21.8 6.4-6.3"/>
+                                            <path d="m19 5-7 7"/>
+                                        </svg>
+                                    </span>
+                                    <span class="why-direct-label">Multi-cuisine Restaurant</span>
+                                </li>
+                                <li class="why-direct-item">
+                                    <span class="why-direct-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                                            <rect x="2.5" y="2.5" width="19" height="19" rx="3.5" fill="#2d3748" />
+                                            <path d="M8.5 6.5h4.2c1.9 0 3.3 1.3 3.3 3.2s-1.4 3.2-3.3 3.2h-2.1v4.6H8.5V6.5zm2.1 4.5h2c.8 0 1.4-.5 1.4-1.3s-.6-1.3-1.4-1.3h-2v2.6z" fill="#ffffff" />
+                                        </svg>
+                                    </span>
+                                    <span class="why-direct-label">Free outside Parking</span>
+                                </li>
+                                <li class="why-direct-item">
+                                    <span class="why-direct-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="#2d3748">
+                                            <circle cx="12" cy="5" r="2.2" />
+                                            <circle cx="8" cy="11.5" r="2.2" />
+                                            <circle cx="16" cy="11.5" r="2.2" />
+                                            <circle cx="4.5" cy="18" r="2.2" />
+                                            <circle cx="12" cy="18" r="2.2" />
+                                            <circle cx="19.5" cy="18" r="2.2" />
+                                        </svg>
+                                    </span>
+                                    <span class="why-direct-label">Game Zone</span>
+                                </li>
+                                <li class="why-direct-item">
+                                    <span class="why-direct-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 15c1.8-1.1 4.2-1.1 6 0s4.2 1.1 6 0 4.2-1.1 6 0" />
+                                            <path d="M3 19c1.8-1.1 4.2-1.1 6 0s4.2 1.1 6 0 4.2-1.1 6 0" />
+                                            <path d="M7 11V5a2 2 0 0 1 4 0v6" />
+                                            <path d="M13 11V5a2 2 0 0 1 4 0v6" />
+                                            <path d="M7 8h4" />
+                                            <path d="M13 8h4" />
+                                        </svg>
+                                    </span>
+                                    <span class="why-direct-label">Swimming Pool</span>
+                                </li>
+                                <li class="why-direct-item">
+                                    <span class="why-direct-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="#2d3748">
+                                            <path d="M12 2a1.8 1.8 0 0 1 1.8 1.8v.5a7.5 7.5 0 0 1 2.2.9l.4-.4a1.8 1.8 0 1 1 2.5 2.5l-.4.4c.4.7.7 1.4.9 2.2h.5a1.8 1.8 0 1 1 0 3.6h-.5a7.5 7.5 0 0 1-.9 2.2l.4.4a1.8 1.8 0 1 1-2.5 2.5l-.4-.4a7.5 7.5 0 0 1-2.2.9v.5a1.8 1.8 0 1 1-3.6 0v-.5a7.5 7.5 0 0 1-2.2-.9l-.4.4a1.8 1.8 0 1 1-2.5-2.5l.4-.4a7.5 7.5 0 0 1-.9-2.2h-.5a1.8 1.8 0 1 1 0-3.6h.5c.2-.8.5-1.5.9-2.2l-.4-.4a1.8 1.8 0 1 1 2.5-2.5l.4.4c.7-.4 1.4-.7 2.2-.9v-.5A1.8 1.8 0 0 1 12 2zm0 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="why-direct-label">Free cancellation 2 days before check-in</span>
+                                </li>
+                                <li class="why-direct-item">
+                                    <span class="why-direct-icon">
+                                        <svg viewBox="0 0 24 24" width="18" height="18" fill="#2d3748">
+                                            <circle cx="12" cy="12" r="10" />
+                                            <polyline points="12 6.5 12 12 15.5 14" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </span>
+                                    <div class="why-direct-text-col">
+                                        <span class="why-direct-label">Early Check-in and Late Check-out</span>
+                                        <span class="why-direct-subtext">(Subject to availability)</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <a href="contact.html" class="booking-sublink">Manage Booking / Special Assistance</a>
                 </div>
             </div>
@@ -293,7 +359,8 @@
                             <i data-lucide="map-pin"></i>
                         </div>
                         <h3 class="why-feature-title">2-Min Walk to Beach</h3>
-                        <p class="why-feature-desc">Steps from Tarkarli's pristine white sands and crystal sea waters.</p>
+                        <p class="why-feature-desc">Steps from Tarkarli's pristine white sands and crystal sea waters.
+                        </p>
                     </div>
 
                     <!-- Feature 2 -->
@@ -302,7 +369,8 @@
                             <i data-lucide="bed-double"></i>
                         </div>
                         <h3 class="why-feature-title">AC Rooms &amp; Suites</h3>
-                        <p class="why-feature-desc">Spacious AC Sea View, Mountain View, and Family Suites with modern amenities.</p>
+                        <p class="why-feature-desc">Spacious AC Sea View, Mountain View, and Family Suites with modern
+                            amenities.</p>
                     </div>
 
                     <!-- Feature 3 -->
@@ -311,7 +379,8 @@
                             <i data-lucide="utensils"></i>
                         </div>
                         <h3 class="why-feature-title">Authentic Malvani Dining</h3>
-                        <p class="why-feature-desc">In-house restaurant serving fresh coastal seafood, fish thalis, and Sol Kadhi.</p>
+                        <p class="why-feature-desc">In-house restaurant serving fresh coastal seafood, fish thalis, and
+                            Sol Kadhi.</p>
                     </div>
 
                     <!-- Feature 4 -->
@@ -320,7 +389,8 @@
                             <i data-lucide="compass"></i>
                         </div>
                         <h3 class="why-feature-title">Scuba &amp; Adventures</h3>
-                        <p class="why-feature-desc">Certified scuba diving, water sports, and fort boat ride assistance.</p>
+                        <p class="why-feature-desc">Certified scuba diving, water sports, and fort boat ride assistance.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -337,10 +407,16 @@
                     <span class="section-eyebrow">A Boutique Coastal Stay</span>
                     <h2 class="editorial-title">Wairkar's 3 Wonders Tarkarli: Your Beachside Sanctuary</h2>
                     <p class="editorial-body">
-                        Located along the picturesque Tarkarli-Devbag coastal corridor in Malvan, <strong>Wairkar's 3 Wonders</strong> is built for slow weekends, sun-soaked beaches, and warm Konkan hospitality. Designed for families, couples, and groups seeking tranquil coastal vibes, our boutique property offers spacious, fully air-conditioned rooms with private bathrooms, secure parking, and round-the-clock front desk assistance.
+                        Located along the picturesque Tarkarli-Devbag coastal corridor in Malvan, <strong>Wairkar's 3
+                            Wonders</strong> is built for slow weekends, sun-soaked beaches, and warm Konkan
+                        hospitality. Designed for families, couples, and groups seeking tranquil coastal vibes, our
+                        boutique property offers spacious, fully air-conditioned rooms with private bathrooms, secure
+                        parking, and round-the-clock front desk assistance.
                     </p>
                     <p class="editorial-body">
-                        Wake up to the gentle sea breeze, stroll down to Tarkarli Beach in less than two minutes, and spend your afternoons relaxing in our peaceful courtyard or discovering the vibrant coastal culture of Sindhudurg.
+                        Wake up to the gentle sea breeze, stroll down to Tarkarli Beach in less than two minutes, and
+                        spend your afternoons relaxing in our peaceful courtyard or discovering the vibrant coastal
+                        culture of Sindhudurg.
                     </p>
                     <div class="editorial-actions">
                         <a href="rooms.html" class="btn btn-outline">EXPLORE ROOMS</a>
@@ -348,7 +424,8 @@
                 </div>
 
                 <div class="editorial-media">
-                    <img src="photos/SEA VIEW DELUXE.jpeg" alt="AC Sea View Deluxe Room at 3 Wonders Tarkarli" class="editorial-img" loading="lazy">
+                    <img src="photos/SEA VIEW DELUXE.jpeg" alt="AC Sea View Deluxe Room at 3 Wonders Tarkarli"
+                        class="editorial-img" loading="lazy">
                 </div>
             </div>
         </div>
@@ -361,17 +438,22 @@
         <div class="container">
             <div class="editorial-grid reverse">
                 <div class="editorial-media editorial-media-arch">
-                    <img src="photos/RESTAURANT.jpeg" alt="In-house Restaurant Dining at 3 Wonders Tarkarli" class="editorial-img" loading="lazy">
+                    <img src="photos/RESTAURANT.jpeg" alt="In-house Restaurant Dining at 3 Wonders Tarkarli"
+                        class="editorial-img" loading="lazy">
                 </div>
 
                 <div class="editorial-card editorial-card-boxed">
                     <span class="section-eyebrow">In-House Culinary Journey</span>
                     <h2 class="editorial-title">Savour &amp; Unwind: Authentic Malvani Flavours</h2>
                     <p class="editorial-body">
-                        A breezy seaside table, the aroma of stone-ground Konkan spices, and a menu celebrating the bounty of the Arabian Sea. Meals at 3 Wonders are an invitation to slow down and relish authentic Malvani gastronomy.
+                        A breezy seaside table, the aroma of stone-ground Konkan spices, and a menu celebrating the
+                        bounty of the Arabian Sea. Meals at 3 Wonders are an invitation to slow down and relish
+                        authentic Malvani gastronomy.
                     </p>
                     <p class="editorial-body">
-                        From freshly caught Surmai and Pomfret pan-fried to crisp perfection, to comforting Kokum-infused curries and chilled glasses of freshly pressed Sol Kadhi, every dish is crafted with local home-style love. Gather your loved ones and make every meal a coastal memory.
+                        From freshly caught Surmai and Pomfret pan-fried to crisp perfection, to comforting
+                        Kokum-infused curries and chilled glasses of freshly pressed Sol Kadhi, every dish is crafted
+                        with local home-style love. Gather your loved ones and make every meal a coastal memory.
                     </p>
                     <div class="editorial-actions">
                         <a href="dining.html" class="btn btn-outline">KNOW MORE</a>
@@ -381,32 +463,6 @@
         </div>
     </section>
 
-    <!-- ============================================================
-         5C. EDITORIAL SECTION 3 — TARKARLI & THE KONKAN COAST (Screenshot 5 Style)
-         ============================================================ -->
-    <section class="editorial-section" aria-label="Explore Konkan Coast">
-        <div class="container">
-            <div class="editorial-grid">
-                <div class="editorial-card editorial-card-boxed">
-                    <span class="section-eyebrow">Discover Konkan Magic</span>
-                    <h2 class="editorial-title">Let the Konkan Coast Captivate Your Heart</h2>
-                    <p class="editorial-body">
-                        There is something quietly enchanting about Tarkarli. From the magnificent sea walls of Chhatrapati Shivaji Maharaj's 17th-century <strong>Sindhudurg Fort</strong> rising majestically from the Arabian Sea, to dolphin cruises across the peaceful Karli backwaters, this coastal haven is steeped in natural wonder and Maratha history.
-                    </p>
-                    <p class="editorial-body">
-                        Whether you are scuba diving among vibrant underwater corals or watching golden sunsets over Devbag Beach, 3 Wonders provides the ideal base to experience it all.
-                    </p>
-                    <div class="editorial-actions">
-                        <a href="experiences.html" class="btn btn-outline">KNOW MORE</a>
-                    </div>
-                </div>
-
-                <div class="editorial-media">
-                    <img src="photos/sindhudurg_fort.jpeg" alt="Sindhudurg Fort in the Arabian Sea" class="editorial-img" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- ============================================================
          6. EXPERIENCES PREVIEW CAROUSEL (Section 6 Requirements)
@@ -417,7 +473,8 @@
                 <span class="section-eyebrow">Curated Coastal Adventures</span>
                 <h2 class="section-title">Discover Experiences at 3 Wonders Tarkarli</h2>
                 <p class="section-desc">
-                    Immerse yourself in thrilling marine sports, golden beaches, historic sea forts, and serene backwaters.
+                    Immerse yourself in thrilling marine sports, golden beaches, historic sea forts, and serene
+                    backwaters.
                 </p>
             </div>
 
@@ -434,61 +491,73 @@
                 <div class="carousel-track" id="experiencesTrack">
                     <!-- Slide 1 -->
                     <div class="experience-slide-card" onclick="location.href='experiences.html'">
-                        <img src="photos/scuba_diving.jpeg" alt="Scuba Diving in Tarkarli" class="experience-slide-img" loading="lazy">
+                        <img src="photos/scuba_diving.jpeg" alt="Scuba Diving in Tarkarli" class="experience-slide-img"
+                            loading="lazy">
                         <div class="experience-slide-overlay">
                             <span class="experience-slide-tag">Undersea Adventure</span>
                             <h3 class="experience-slide-title">Scuba Diving &amp; Snorkeling</h3>
-                            <p class="experience-slide-desc">Explore crystal-clear waters and vibrant marine life on India's premier diving coast.</p>
+                            <p class="experience-slide-desc">Explore crystal-clear waters and vibrant marine life on
+                                India's premier diving coast.</p>
                         </div>
                     </div>
 
                     <!-- Slide 2 -->
                     <div class="experience-slide-card" onclick="location.href='experiences.html'">
-                        <img src="photos/tarkarli_beach.jpeg" alt="Tarkarli Beach Days" class="experience-slide-img" loading="lazy">
+                        <img src="photos/tarkarli_beach.jpeg" alt="Tarkarli Beach Days" class="experience-slide-img"
+                            loading="lazy">
                         <div class="experience-slide-overlay">
                             <span class="experience-slide-tag">Coastal Leisure</span>
                             <h3 class="experience-slide-title">Tarkarli Beach Days</h3>
-                            <p class="experience-slide-desc">Unwind along pristine white sands just steps from your room. Pure peace and sea breeze.</p>
+                            <p class="experience-slide-desc">Unwind along pristine white sands just steps from your
+                                room. Pure peace and sea breeze.</p>
                         </div>
                     </div>
 
                     <!-- Slide 3 -->
                     <div class="experience-slide-card" onclick="location.href='experiences.html'">
-                        <img src="photos/malvani_cuisine.jpeg" alt="Malvani Cuisine Trail" class="experience-slide-img" loading="lazy">
+                        <img src="photos/malvani_cuisine.jpeg" alt="Malvani Cuisine Trail" class="experience-slide-img"
+                            loading="lazy">
                         <div class="experience-slide-overlay">
                             <span class="experience-slide-tag">Gastronomy</span>
                             <h3 class="experience-slide-title">Malvani Food Trail</h3>
-                            <p class="experience-slide-desc">Taste authentic coastal recipes from spiced fish curry to kokum sol kadhi.</p>
+                            <p class="experience-slide-desc">Taste authentic coastal recipes from spiced fish curry to
+                                kokum sol kadhi.</p>
                         </div>
                     </div>
 
                     <!-- Slide 4 -->
                     <div class="experience-slide-card" onclick="location.href='experiences.html'">
-                        <img src="photos/sindhudurg_fort.jpeg" alt="Sindhudurg Fort Exploration" class="experience-slide-img" loading="lazy">
+                        <img src="photos/sindhudurg_fort.jpeg" alt="Sindhudurg Fort Exploration"
+                            class="experience-slide-img" loading="lazy">
                         <div class="experience-slide-overlay">
                             <span class="experience-slide-tag">Heritage</span>
                             <h3 class="experience-slide-title">Sindhudurg Fort Tour</h3>
-                            <p class="experience-slide-desc">Take a ferry to the historic 17th-century sea fort constructed by Chhatrapati Shivaji Maharaj.</p>
+                            <p class="experience-slide-desc">Take a ferry to the historic 17th-century sea fort
+                                constructed by Chhatrapati Shivaji Maharaj.</p>
                         </div>
                     </div>
 
                     <!-- Slide 5 -->
                     <div class="experience-slide-card" onclick="location.href='experiences.html'">
-                        <img src="photos/tarkarli_sunset.jpeg" alt="Karli River Sunset & Backwaters" class="experience-slide-img" loading="lazy">
+                        <img src="photos/tarkarli_sunset.jpeg" alt="Karli River Sunset & Backwaters"
+                            class="experience-slide-img" loading="lazy">
                         <div class="experience-slide-overlay">
                             <span class="experience-slide-tag">Nature &amp; Calm</span>
                             <h3 class="experience-slide-title">Sunset &amp; Karli Backwaters</h3>
-                            <p class="experience-slide-desc">Glide through peaceful mangroves on scenic boat cruises as skies turn golden orange.</p>
+                            <p class="experience-slide-desc">Glide through peaceful mangroves on scenic boat cruises as
+                                skies turn golden orange.</p>
                         </div>
                     </div>
 
                     <!-- Slide 6 -->
                     <div class="experience-slide-card" onclick="location.href='experiences.html'">
-                        <img src="photos/tarkarli_culture.jpeg" alt="Local Konkan Culture" class="experience-slide-img" loading="lazy">
+                        <img src="photos/tarkarli_culture.jpeg" alt="Local Konkan Culture" class="experience-slide-img"
+                            loading="lazy">
                         <div class="experience-slide-overlay">
                             <span class="experience-slide-tag">Local Heritage</span>
                             <h3 class="experience-slide-title">Konkan Culture &amp; Temples</h3>
-                            <p class="experience-slide-desc">Discover the warmth of Malvani villages, ancient temples, and local traditions.</p>
+                            <p class="experience-slide-desc">Discover the warmth of Malvani villages, ancient temples,
+                                and local traditions.</p>
                         </div>
                     </div>
                 </div>
@@ -507,7 +576,8 @@
     <!-- ============================================================
          7. NEARBY TOURIST ATTRACTIONS CAROUSEL (Section 7 Requirements)
          ============================================================ -->
-    <section class="carousel-section" style="background-color: var(--color-sand);" aria-label="Nearby Tourist Attractions">
+    <section class="carousel-section" style="background-color: var(--color-sand);"
+        aria-label="Nearby Tourist Attractions">
         <div class="container-wide">
             <div class="section-header">
                 <span class="section-eyebrow">Destination Highlights</span>
@@ -531,15 +601,19 @@
                     <!-- Attraction 1: Tarkarli Beach -->
                     <div class="attraction-slide-card">
                         <div class="attraction-slide-media">
-                            <img src="photos/tarkarli_beach2.png" alt="Tarkarli Beach" class="attraction-slide-img" loading="lazy">
+                            <img src="photos/tarkarli_beach2.png" alt="Tarkarli Beach" class="attraction-slide-img"
+                                loading="lazy">
                             <span class="attraction-slide-badge">Beach</span>
                         </div>
                         <div class="attraction-slide-body">
                             <h3 class="attraction-slide-title">Tarkarli Beach</h3>
-                            <p class="attraction-slide-desc">Crystal-clear waters and soft white sands. One of Maharashtra's most scenic beaches.</p>
+                            <p class="attraction-slide-desc">Crystal-clear waters and soft white sands. One of
+                                Maharashtra's most scenic beaches.</p>
                             <div class="attraction-slide-meta">
-                                <span class="attraction-dist"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Walking distance (2 min walk)</span>
-                                <a href="https://www.google.com/maps/search/Tarkarli+Beach+Maharashtra" target="_blank" rel="noopener" class="attraction-map-link">Map</a>
+                                <span class="attraction-dist"><i data-lucide="map-pin"
+                                        style="width:14px;height:14px;"></i> Walking distance (2 min walk)</span>
+                                <a href="https://www.google.com/maps/search/Tarkarli+Beach+Maharashtra" target="_blank"
+                                    rel="noopener" class="attraction-map-link">Map</a>
                             </div>
                         </div>
                     </div>
@@ -547,15 +621,19 @@
                     <!-- Attraction 2: Devbag Beach & Sangam -->
                     <div class="attraction-slide-card">
                         <div class="attraction-slide-media">
-                            <img src="photos/devbaug_beach.jpeg" alt="Devbag Beach" class="attraction-slide-img" loading="lazy">
+                            <img src="photos/devbaug_beach.jpeg" alt="Devbag Beach" class="attraction-slide-img"
+                                loading="lazy">
                             <span class="attraction-slide-badge">Confluence</span>
                         </div>
                         <div class="attraction-slide-body">
                             <h3 class="attraction-slide-title">Devbag Beach</h3>
-                            <p class="attraction-slide-desc">Where the serene Karli River meets the Arabian Sea. A breathtaking peninsula confluence.</p>
+                            <p class="attraction-slide-desc">Where the serene Karli River meets the Arabian Sea. A
+                                breathtaking peninsula confluence.</p>
                             <div class="attraction-slide-meta">
-                                <span class="attraction-dist"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> ~5 km (~10 min drive)</span>
-                                <a href="https://www.google.com/maps/search/Devbag+Beach+Tarkarli" target="_blank" rel="noopener" class="attraction-map-link">Map</a>
+                                <span class="attraction-dist"><i data-lucide="map-pin"
+                                        style="width:14px;height:14px;"></i> ~5 km (~10 min drive)</span>
+                                <a href="https://www.google.com/maps/search/Devbag+Beach+Tarkarli" target="_blank"
+                                    rel="noopener" class="attraction-map-link">Map</a>
                             </div>
                         </div>
                     </div>
@@ -563,15 +641,19 @@
                     <!-- Attraction 3: Sindhudurg Fort -->
                     <div class="attraction-slide-card">
                         <div class="attraction-slide-media">
-                            <img src="photos/sindhudurg_fort.jpeg" alt="Sindhudurg Fort" class="attraction-slide-img" loading="lazy">
+                            <img src="photos/sindhudurg_fort.jpeg" alt="Sindhudurg Fort" class="attraction-slide-img"
+                                loading="lazy">
                             <span class="attraction-slide-badge">Heritage</span>
                         </div>
                         <div class="attraction-slide-body">
                             <h3 class="attraction-slide-title">Sindhudurg Fort</h3>
-                            <p class="attraction-slide-desc">Historic sea bastion built by Chhatrapati Shivaji Maharaj in 1664. Ferry ride from Malvan jetty.</p>
+                            <p class="attraction-slide-desc">Historic sea bastion built by Chhatrapati Shivaji Maharaj
+                                in 1664. Ferry ride from Malvan jetty.</p>
                             <div class="attraction-slide-meta">
-                                <span class="attraction-dist"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> ~30 km (~45 min)</span>
-                                <a href="https://www.google.com/maps/search/Sindhudurg+Fort+Malvan" target="_blank" rel="noopener" class="attraction-map-link">Map</a>
+                                <span class="attraction-dist"><i data-lucide="map-pin"
+                                        style="width:14px;height:14px;"></i> ~30 km (~45 min)</span>
+                                <a href="https://www.google.com/maps/search/Sindhudurg+Fort+Malvan" target="_blank"
+                                    rel="noopener" class="attraction-map-link">Map</a>
                             </div>
                         </div>
                     </div>
@@ -579,15 +661,19 @@
                     <!-- Attraction 4: Tsunami Island -->
                     <div class="attraction-slide-card">
                         <div class="attraction-slide-media">
-                            <img src="photos/tsunami_island.jpeg" alt="Tsunami Island" class="attraction-slide-img" loading="lazy">
+                            <img src="photos/tsunami_island.jpeg" alt="Tsunami Island" class="attraction-slide-img"
+                                loading="lazy">
                             <span class="attraction-slide-badge">Water Sports</span>
                         </div>
                         <div class="attraction-slide-body">
                             <h3 class="attraction-slide-title">Tsunami Island</h3>
-                            <p class="attraction-slide-desc">Naturally formed sand island in the Karli delta offering jet-skiing, bumper rides, and banana boats.</p>
+                            <p class="attraction-slide-desc">Naturally formed sand island in the Karli delta offering
+                                jet-skiing, bumper rides, and banana boats.</p>
                             <div class="attraction-slide-meta">
-                                <span class="attraction-dist"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> ~8 km (~15 min)</span>
-                                <a href="https://www.google.com/maps/search/Tsunami+Island+Devbag" target="_blank" rel="noopener" class="attraction-map-link">Map</a>
+                                <span class="attraction-dist"><i data-lucide="map-pin"
+                                        style="width:14px;height:14px;"></i> ~8 km (~15 min)</span>
+                                <a href="https://www.google.com/maps/search/Tsunami+Island+Devbag" target="_blank"
+                                    rel="noopener" class="attraction-map-link">Map</a>
                             </div>
                         </div>
                     </div>
@@ -595,15 +681,19 @@
                     <!-- Attraction 5: Karli Backwaters -->
                     <div class="attraction-slide-card">
                         <div class="attraction-slide-media">
-                            <img src="photos/karli_backwaters.jpeg" alt="Karli Backwaters" class="attraction-slide-img" loading="lazy">
+                            <img src="photos/karli_backwaters.jpeg" alt="Karli Backwaters" class="attraction-slide-img"
+                                loading="lazy">
                             <span class="attraction-slide-badge">Nature</span>
                         </div>
                         <div class="attraction-slide-body">
                             <h3 class="attraction-slide-title">Karli Backwaters</h3>
-                            <p class="attraction-slide-desc">Peaceful boat safaris through dense mangroves. Ideal for bird watching and dolphin spotting.</p>
+                            <p class="attraction-slide-desc">Peaceful boat safaris through dense mangroves. Ideal for
+                                bird watching and dolphin spotting.</p>
                             <div class="attraction-slide-meta">
-                                <span class="attraction-dist"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> ~3 km (~5 min)</span>
-                                <a href="https://www.google.com/maps/search/Karli+River+Backwaters+Tarkarli" target="_blank" rel="noopener" class="attraction-map-link">Map</a>
+                                <span class="attraction-dist"><i data-lucide="map-pin"
+                                        style="width:14px;height:14px;"></i> ~3 km (~5 min)</span>
+                                <a href="https://www.google.com/maps/search/Karli+River+Backwaters+Tarkarli"
+                                    target="_blank" rel="noopener" class="attraction-map-link">Map</a>
                             </div>
                         </div>
                     </div>
@@ -611,15 +701,19 @@
                     <!-- Attraction 6: Malvan Town -->
                     <div class="attraction-slide-card">
                         <div class="attraction-slide-media">
-                            <img src="photos/malvan_town.jpeg" alt="Malvan Town" class="attraction-slide-img" loading="lazy">
+                            <img src="photos/malvan_town.jpeg" alt="Malvan Town" class="attraction-slide-img"
+                                loading="lazy">
                             <span class="attraction-slide-badge">Town &amp; Markets</span>
                         </div>
                         <div class="attraction-slide-body">
                             <h3 class="attraction-slide-title">Malvan Town</h3>
-                            <p class="attraction-slide-desc">Vibrant coastal bazaar famous for Malvani masalas, cashew nuts, fresh fish markets, and handicrafts.</p>
+                            <p class="attraction-slide-desc">Vibrant coastal bazaar famous for Malvani masalas, cashew
+                                nuts, fresh fish markets, and handicrafts.</p>
                             <div class="attraction-slide-meta">
-                                <span class="attraction-dist"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> ~25 km (~35 min)</span>
-                                <a href="https://www.google.com/maps/search/Malvan+Maharashtra" target="_blank" rel="noopener" class="attraction-map-link">Map</a>
+                                <span class="attraction-dist"><i data-lucide="map-pin"
+                                        style="width:14px;height:14px;"></i> ~25 km (~35 min)</span>
+                                <a href="https://www.google.com/maps/search/Malvan+Maharashtra" target="_blank"
+                                    rel="noopener" class="attraction-map-link">Map</a>
                             </div>
                         </div>
                     </div>
@@ -645,7 +739,8 @@
                 <span class="section-eyebrow">Guest Experiences</span>
                 <h2 class="section-title">What Our Guests Say</h2>
                 <p class="section-desc">
-                    Authentic feedback from travelers who experienced peaceful stays and warm Malvani hospitality at 3 Wonders.
+                    Authentic feedback from travelers who experienced peaceful stays and warm Malvani hospitality at 3
+                    Wonders.
                 </p>
             </div>
 
@@ -657,7 +752,8 @@
                         <div class="testimonial-quote-icon">“</div>
                         <div class="testimonial-rating">★★★★★</div>
                         <p class="testimonial-text">
-                            "The location is fantastic — just steps from Tarkarli Beach. Rooms were clean, comfortable, and air-conditioned. The Malvani food at their restaurant was absolutely delicious!"
+                            "The location is fantastic — just steps from Tarkarli Beach. Rooms were clean, comfortable,
+                            and air-conditioned. The Malvani food at their restaurant was absolutely delicious!"
                         </p>
                     </div>
                     <div>
@@ -672,7 +768,8 @@
                         <div class="testimonial-quote-icon">“</div>
                         <div class="testimonial-rating">★★★★★</div>
                         <p class="testimonial-text">
-                            "Great hospitality and warm staff. The sea view from the room was breathtaking. Perfect for a family vacation. Will definitely visit again when we return to Tarkarli."
+                            "Great hospitality and warm staff. The sea view from the room was breathtaking. Perfect for
+                            a family vacation. Will definitely visit again when we return to Tarkarli."
                         </p>
                     </div>
                     <div>
@@ -687,7 +784,8 @@
                         <div class="testimonial-quote-icon">“</div>
                         <div class="testimonial-rating">★★★★★</div>
                         <p class="testimonial-text">
-                            "Loved the food — especially the fish curry and sol kadhi. The beach is literally a 2-minute walk. Good value for money and very peaceful environment."
+                            "Loved the food — especially the fish curry and sol kadhi. The beach is literally a 2-minute
+                            walk. Good value for money and very peaceful environment."
                         </p>
                     </div>
                     <div>
@@ -709,7 +807,8 @@
                 <div class="footer-brand">
                     <h4>3 Wonders Tarkarli</h4>
                     <p>
-                        Wairkar's boutique beachside resort offering air-conditioned rooms, authentic Malvani dining, and unforgettable sunsets along the Arabian Sea.
+                        Wairkar's boutique beachside resort offering air-conditioned rooms, authentic Malvani dining,
+                        and unforgettable sunsets along the Arabian Sea.
                     </p>
                     <div style="font-size:0.84rem; color:rgba(255,255,255,0.7);">
                         Check-in: 12:00 PM · Check-out: 11:00 AM
@@ -747,7 +846,8 @@
                     <h5 class="footer-col-title">Get in Touch</h5>
                     <div class="footer-contact-item">
                         <i data-lucide="map-pin" style="width: 18px; height: 18px;"></i>
-                        <span>House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg, Maharashtra - 416606</span>
+                        <span>House No. 892/893, Tarkarli Kalethar, Tarkarli Devbag Road, Malvan, Sindhudurg,
+                            Maharashtra - 416606</span>
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
@@ -755,7 +855,8 @@
                     </div>
                     <div class="footer-contact-item">
                         <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i>
-                        <a href="https://wa.me/919820049021" target="_blank" style="color:inherit;">WhatsApp: +91 98200 49021</a>
+                        <a href="https://wa.me/919820049021" target="_blank" style="color:inherit;">WhatsApp: +91 98200
+                            49021</a>
                     </div>
                 </div>
             </div>
@@ -781,7 +882,8 @@
         <a href="https://wa.me/919820049021?text=Hi%2C%20I%20would%20like%20to%20enquire%20about%20staying%20at%203%20Wonders%20Tarkarli."
             class="floating-whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat with 3 Wonders on WhatsApp">
             <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.07c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.15.11-3.69-.94-3.25-1.35-5.34-4.66-5.5-4.88-.16-.22-1.31-1.74-1.31-3.32 0-1.58.83-2.36 1.12-2.68.29-.32.64-.4.85-.4.21 0 .42.01.61.02.2.01.46-.07.72.55.26.63.89 2.18.97 2.34.08.16.13.35.03.56-.11.21-.16.34-.32.52-.16.18-.34.4-.48.54-.16.15-.33.32-.14.64.19.32.84 1.39 1.8 2.25 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.13.7-.08.19-.21.8-.93 1.01-1.25.21-.32.43-.27.72-.16.29.11 1.86.88 2.18 1.04.32.16.53.24.61.37.08.14.08.79-.16 1.46z"/>
+                <path
+                    d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.8 14.07c-.24.67-1.39 1.28-1.92 1.36-.51.08-1.15.11-3.69-.94-3.25-1.35-5.34-4.66-5.5-4.88-.16-.22-1.31-1.74-1.31-3.32 0-1.58.83-2.36 1.12-2.68.29-.32.64-.4.85-.4.21 0 .42.01.61.02.2.01.46-.07.72.55.26.63.89 2.18.97 2.34.08.16.13.35.03.56-.11.21-.16.34-.32.52-.16.18-.34.4-.48.54-.16.15-.33.32-.14.64.19.32.84 1.39 1.8 2.25 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.13.7-.08.19-.21.8-.93 1.01-1.25.21-.32.43-.27.72-.16.29.11 1.86.88 2.18 1.04.32.16.53.24.61.37.08.14.08.79-.16 1.46z" />
             </svg>
         </a>
 
@@ -792,8 +894,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="data.js"></script>
-    <script src="app.js?v=11"></script>
+    <script src="data.js?v=16"></script>
+    <script src="app.js?v=24"></script>
 </body>
 
 </html>
