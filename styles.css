@@ -1437,6 +1437,43 @@ h6 {
     margin-top: 2rem;
 }
 
+/* Travel Guide Image in Explore Tarkarli & Beyond Section */
+.travel-guide-container {
+    margin-top: 3.5rem;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.5rem;
+}
+
+.travel-guide-card {
+    max-width: 820px;
+    width: 100%;
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 36px rgba(15, 44, 66, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.travel-guide-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(15, 44, 66, 0.16);
+}
+
+.travel-guide-link {
+    display: block;
+    cursor: zoom-in;
+    text-decoration: none;
+}
+
+.travel-guide-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
 /* ============================================================
    TESTIMONIALS SECTION (Guest Experiences)
    ============================================================ */
@@ -1454,7 +1491,7 @@ h6 {
 .testimonial-card {
     background: var(--color-white);
     border-radius: var(--radius-md);
-    padding: 2.25rem 2rem;
+    padding: 1.35rem 1.25rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0, 0, 0, 0.08);
     display: flex;
@@ -1471,18 +1508,18 @@ h6 {
 
 .testimonial-quote-icon {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
+    font-size: 2rem;
     line-height: 1;
     color: var(--color-accent);
     opacity: 0.25;
-    margin-bottom: -1.2rem;
+    margin-bottom: -0.4rem;
 }
 
 .testimonial-text {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     color: var(--color-text-main);
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
+    line-height: 1.55;
+    margin-bottom: 0.9rem;
     position: relative;
     z-index: 1;
 }
@@ -2502,7 +2539,6 @@ h6 {
     }
 
     .rooms-grid,
-    .testimonials-grid,
     .transit-grid,
     .dining-gallery-grid {
         grid-template-columns: 1fr;
@@ -2544,6 +2580,149 @@ h6 {
     .carousel-btn-next {
         right: 0;
     }
+
+    /* 1. Hide Book Now pop-up / bar on Landing Page for Phone */
+    .booking-bar-container {
+        display: none !important;
+    }
+
+    .hero-section {
+        min-height: 70vh !important;
+        min-height: 75dvh !important;
+        justify-content: center !important;
+        padding: 85px 0 1.5rem !important;
+    }
+
+    .hero-arrow {
+        display: none !important;
+    }
+
+    /* 2. Why Choose Us: Arranged 2 in a row */
+    .why-features-row {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.25rem 0.85rem !important;
+    }
+
+    .why-feature-card {
+        gap: 0.45rem;
+        padding: 0.25rem;
+    }
+
+    .why-feature-icon-wrap {
+        width: 44px;
+        height: 44px;
+    }
+
+    .why-feature-icon-wrap svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .why-feature-title {
+        font-size: 0.88rem;
+        line-height: 1.25;
+    }
+
+    .why-feature-desc {
+        font-size: 0.74rem;
+        line-height: 1.35;
+    }
+
+    /* 3. Sanctuary & Malvani Flavours Sections: Title -> Photo -> Text */
+    .editorial-grid,
+    .editorial-grid.reverse {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.25rem !important;
+    }
+
+    .editorial-card,
+    .editorial-card.editorial-card-boxed {
+        display: contents !important;
+    }
+
+    .editorial-header {
+        order: 1 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .editorial-title {
+        font-size: clamp(1.5rem, 5.2vw, 2.1rem);
+        line-height: 1.25;
+    }
+
+    .editorial-media,
+    .editorial-grid.reverse .editorial-media {
+        order: 2 !important;
+        width: 100%;
+    }
+
+    .editorial-img {
+        height: 250px !important;
+        object-fit: cover;
+    }
+
+    .editorial-content {
+        order: 3 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .editorial-card-boxed {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+
+    /* 4. Guest Experiences Section: 3 in one row, reduce tile height and empty space */
+    .testimonials-section {
+        padding: clamp(2.25rem, 4vw, 3.25rem) 0;
+    }
+
+    .testimonials-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+
+    .testimonial-card {
+        padding: 0.75rem 0.55rem !important;
+        border-radius: var(--radius-sm) !important;
+        min-height: auto !important;
+        gap: 0.35rem !important;
+        justify-content: flex-start !important;
+    }
+
+    .testimonial-quote-icon {
+        display: none !important;
+    }
+
+    .testimonial-rating {
+        font-size: 0.72rem !important;
+        letter-spacing: 1px !important;
+        margin-bottom: 0.2rem !important;
+        line-height: 1 !important;
+    }
+
+    .testimonial-text {
+        font-size: 0.72rem !important;
+        line-height: 1.35 !important;
+        margin-bottom: 0.4rem !important;
+    }
+
+    .testimonial-author {
+        font-size: 0.72rem !important;
+        font-weight: 700 !important;
+        line-height: 1.2 !important;
+    }
+
+    .testimonial-source {
+        font-size: 0.62rem !important;
+        line-height: 1.2 !important;
+        opacity: 0.75;
+    }
 }
 
 /* Small Mobile Screens (<= 560px) */
@@ -2557,8 +2736,8 @@ h6 {
     }
 
     .why-features-row {
-        grid-template-columns: 1fr;
-        gap: 1.75rem;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.15rem 0.65rem !important;
     }
 
     .editorial-img {
