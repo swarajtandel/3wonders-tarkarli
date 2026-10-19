@@ -2757,30 +2757,49 @@ h6 {
     /* Contact Page Responsive Adaptation for Mobile/Tablets (<= 860px) */
     .contact-grid {
         grid-template-columns: 1fr !important;
-        gap: 1.75rem !important;
+        gap: 1.5rem !important;
         width: 100% !important;
         max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .contact-card-sidebar {
-        padding: clamp(1.5rem, 5vw, 2.25rem) clamp(1.25rem, 4vw, 1.75rem) !important;
+        padding: 1.5rem 1.15rem !important;
+        border-radius: var(--radius-md) !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 1.25rem !important;
+    }
+
+    .contact-card-sidebar h3 {
+        font-size: 1.5rem !important;
+    }
+
+    .contact-form-panel {
+        padding: 1.5rem 1.15rem !important;
         border-radius: var(--radius-md) !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    .contact-form-panel {
-        padding: clamp(1.5rem, 5vw, 2.25rem) clamp(1.25rem, 4vw, 1.75rem) !important;
-        border-radius: var(--radius-md) !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
+    .contact-form-panel h3 {
+        font-size: 1.45rem !important;
     }
 
     .form-group-grid {
         grid-template-columns: 1fr !important;
-        gap: 1rem !important;
+        gap: 0.85rem !important;
+        margin-bottom: 0.85rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .form-field {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .form-field input,
@@ -2789,11 +2808,19 @@ h6 {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
+        font-size: 0.88rem !important;
+        padding: 0.75rem 0.85rem !important;
     }
 
     .contact-detail-row {
         gap: 0.75rem !important;
         word-break: break-word;
+        align-items: flex-start;
+    }
+
+    .contact-detail-text {
+        flex: 1;
+        min-width: 0;
     }
 
     .contact-detail-text a,
@@ -2933,57 +2960,17 @@ h6 {
         grid-template-columns: 1fr;
     }
 
-    /* Dining & Contact Mobile View Optimizations */
-    .contact-grid {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-
+    /* Dining & Contact Mobile View Optimizations for small screens */
     .contact-card-sidebar {
-        padding: 1.75rem 1.25rem !important;
-        border-radius: var(--radius-md) !important;
+        padding: 1.25rem 1rem !important;
     }
 
     .contact-form-panel {
-        padding: 1.5rem 1.25rem !important;
-        border-radius: var(--radius-md) !important;
-    }
-
-    .contact-detail-row {
-        gap: 0.75rem !important;
-        word-break: break-word;
-    }
-
-    .contact-detail-text a,
-    .contact-detail-text p {
-        word-break: break-word;
-    }
-
-    .dining-intro-grid {
-        grid-template-columns: 1fr !important;
-        gap: 2rem !important;
-    }
-
-    .dining-intro-grid div[style*="display:flex"] {
-        flex-direction: column !important;
-        align-items: stretch !important;
-    }
-
-    .dining-intro-grid .btn {
-        width: 100% !important;
-        white-space: normal !important;
-        text-align: center !important;
-        padding: 0.85rem 1rem !important;
-        font-size: 0.82rem !important;
+        padding: 1.25rem 1rem !important;
     }
 
     .dining-img-card {
-        height: 220px !important;
-    }
-
-    .btn {
-        max-width: 100% !important;
-        box-sizing: border-box !important;
+        height: 200px !important;
     }
 }
 
