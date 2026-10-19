@@ -2599,6 +2599,20 @@ h6 {
         display: none;
     }
 
+    .container,
+    .container-wide {
+        padding: 0 1rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .btn {
+        white-space: normal !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
     .mobile-nav-toggle {
         display: flex;
     }
@@ -2826,6 +2840,20 @@ h6 {
     .contact-detail-text a,
     .contact-detail-text p {
         word-break: break-word;
+    }
+
+    /* Prevent wide buttons on contact page from pushing viewport */
+    .contact-form-panel .btn,
+    .contact-card-sidebar .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        text-align: center !important;
+        padding: 0.9rem 0.75rem !important;
+        font-size: 0.85rem !important;
+        box-sizing: border-box !important;
+        line-height: 1.3 !important;
     }
 
     /* Dining Page Responsive Adaptation for Mobile/Tablets (<= 860px) */
